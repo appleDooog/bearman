@@ -1,10 +1,37 @@
-<template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+
+
+<!-- <template>
+  <memberList></memberList>
 </template>
+
+
+<script>
+// @ is an alias to /src
+import memberList from '@/components/admin/member/memberList.vue';
+
+export default {
+  name: 'memberList',
+  components: {
+    memberList
+  }
+}
+</script> -->
+
+<template>
+  <memberList></memberList>
+</template>
+
+<script>
+// @ is an alias to /src
+import memberList from '@/components/admin/member/memberList.vue';
+
+export default {
+  name: 'App',
+  components: {
+    memberList
+  }
+}
+</script>
 
 <style>
 #app {
