@@ -18,6 +18,8 @@ class Member extends Model
         'tel',
         'email',
         'level',
+        'active',
         'remark',
+        'createTime'
     ];
 }

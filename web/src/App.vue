@@ -1,5 +1,3 @@
-
-
 <!-- <template>
   <memberList></memberList>
 </template>
@@ -22,15 +20,14 @@ export default {
 </template>
 
 <script>
-// @ is an alias to /src
-import memberList from '@/components/admin/member/memberList.vue';
+import memberList from "@/components/admin/member/memberList.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    memberList
-  }
-}
+    memberList,
+  },
+};
 </script>
 
 <style>
