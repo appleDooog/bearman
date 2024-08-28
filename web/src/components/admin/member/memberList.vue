@@ -3,7 +3,7 @@
     <div class="container">
       <div class="card mt-3">
         <div class="card-header">
-          <h2>會員管理系統</h2>
+          <h2>會員列表</h2>
         </div>
         <div class="card-body">
           <div class="row">

@@ -13,5 +13,4 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-require "admin/member.php";
-// Route::get("admin/member/list",[AdminMemberController::class, "list"]);
+require "api/admin/index.php";

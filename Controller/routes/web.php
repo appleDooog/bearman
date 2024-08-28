@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-require "admin/index.php";
+require "api/admin/index.php";
 
 /*
 |--------------------------------------------------------------------------
