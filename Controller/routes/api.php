@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-require "api/admin/index.php";
+require "admin/index.php";
