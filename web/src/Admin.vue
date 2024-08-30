@@ -17,17 +17,16 @@ export default {
 
 <template>
   <home></home>
-    <div class="row vw-100">
-    <div class="col-md-2 bg-dark"></div>
-    <div class="col-md-10 bg-danger"><memberList></memberList></div>
-  </div>
+    <!-- <div class="row vw-100">
+    <div class="col-md-2"></div>
+    <div class="col-md-10 "></div>
+  </div> -->
   
   
 </template>
 
 <script>
 import memberList from "@/components/admin/member/memberList.vue";
-import MemberAdd from "./components/admin/member/memberAdd.vue";
 import home from "./components/admin/home.vue";
 
 export default {

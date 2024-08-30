@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-2">
               <button type="button" class="btn btn-primary">新增</button>
             </div>
           </div>
@@ -26,7 +26,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item) in datalist" :key="item.id">
+                <tr v-for="item in datalist" :key="item.id">
                   <td>{{ item.id }}</td>
                   <td>{{ item.name }}</td>
                   <td>{{ item.address }}</td>
@@ -35,9 +35,13 @@
                   <td>{{ item.level }}</td>
                   <td>{{ item.active }}</td>
                   <td>{{ item.remark }}</td>
-                  <td>
-                    <button type="button" class="btn btn-outline-warning me-3">修改</button>
-                    <button type="button" class="btn btn-outline-danger">刪除</button>
+                  <td class="d-flex justify-content-around">
+                    <button type="button" class="btn btn-outline-warning me-2">
+                      修改
+                    </button>
+                    <button type="button" class="btn btn-outline-danger">
+                      刪除
+                    </button>
                   </td>
                 </tr>
               </tbody>
