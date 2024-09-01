@@ -1,15 +1,12 @@
 <style>
-#adminItems {
+.adminTypes {
   width: 300px;
-  height: 650px;
 }
 </style>
 
 <template>
   <div
-    class="d-block position-relative border border-1 border-dark m-1 shadow"
-    id="adminItems"
-    name="adminItems"
+    class="adminTypes d-block position-relative border border-1 border-dark m-1 shadow"
   >
     <div class="d-block w-100 mt-4" :class="line" style="height: 7px"></div>
     <div
@@ -20,17 +17,22 @@
         class="h2 d-inline ps-1"
         style="font-weight: 900; letter-spacing: 8px"
       >
-        {{ title }}
+      <slot name="title">這裡是title</slot>
       </div>
     </div>
+    <slot><adminItems>這裡是subtitle</adminItems></slot>
   </div>
 </template>
 
 <script>
+import adminItems from './adminItems.vue';
+
 export default {
-  name: "adminItems",
+  name: "adminTypes",
+  components: {
+    adminItems
+  },
   props: {
-    title: String,
     line: String,
   },
 };

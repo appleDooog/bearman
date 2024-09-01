@@ -22,12 +22,13 @@ module.exports = {
       // output as dist/index.html
       filename: "index.html",
     },
-    index02: {
-      entry: "src/main2.js",
+    admin: {
+      entry: "src/mainAdmin.js",
       // the source template
       template: "public/index.html",
       // output as dist/index.html
       filename: "admin.html",
+      title: "Admin",
     },
   },
 };

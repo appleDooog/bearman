@@ -1,10 +1,6 @@
 <style>
-#countNote {
-  width: 400px;
-  height: 160px;
-}
 
-.rounded-circle {
+#countNote .rounded-circle {
   width: 100px;
   height: 100px;
 }
@@ -12,11 +8,11 @@
 
 <template>
   <div
-    class="border border-1 border-dark m-1 rounded-5 mt-3"
+    class="border border-1 border-dark m-3 rounded-5 mt-3"
     id="countNote"
     name="countNote"
   >
-    <div class="row h-100 justify-content-center align-items-center">
+    <div class="row py-3  justify-content-center align-items-center">
       <div
         class="col-md-2 rounded-circle align-content-center"
         :class="bg_color"
@@ -25,7 +21,7 @@
       </div>
       <div class="col-md-6 d-block">
         <div class="h2">{{ title }}</div>
-        <div class="display-5 col-md-12" :class="color">待改{{ count }}</div>
+        <div class="display-5 col-md-12" :class="color"><slot></slot></div>
       </div>
     </div>
   </div>
@@ -37,7 +33,6 @@ export default {
   name: "countNote",
   data: function () {
     return {
-      count,
     };
   },
   props: {
@@ -57,9 +52,6 @@ export default {
       type: String,
       default: "fa-people-group",
     },
-  },
-  methods: {
-    getCount() {},
   },
 };
 </script>

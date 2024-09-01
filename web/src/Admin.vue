@@ -16,24 +16,15 @@ export default {
 </script> -->
 
 <template>
-  <home></home>
-    <!-- <div class="row vw-100">
-    <div class="col-md-2"></div>
-    <div class="col-md-10 "></div>
-  </div> -->
+  <router-view></router-view>
+  <router-view name="home"></router-view>
   
   
 </template>
 
 <script>
-import memberList from "@/components/admin/member/memberList.vue";
-import home from "./components/admin/home.vue";
 
 export default {
   name: "App",
-  components: {
-    home,
-    memberList
-  },
 };
 </script>

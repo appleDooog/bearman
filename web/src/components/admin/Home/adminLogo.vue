@@ -15,7 +15,7 @@
     style="height: 192px"
   >
     <div class="col-md-9 align-content-center">
-      <div class="display-3 color-g1">遠熊駕駛艙</div>
+      <div class="display-3 color-g1" style="font-family: nanifont;">遠熊駕駛艙</div>
       <div class="text-secondary lh-lg">後台管理系統 v1.</div>
     </div>
     <div class="col-md-2 align-content-center">

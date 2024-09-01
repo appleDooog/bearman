@@ -1,23 +1,9 @@
-<!-- <template>
-  <memberList></memberList>
-</template>
-
-
-<script>
-// @ is an alias to /src
-import memberList from '@/components/admin/member/memberList.vue';
-
-export default {
-  name: 'memberList',
-  components: {
-    memberList
-  }
-}
-</script> -->
-
 <template>
-    <memberList></memberList>
-    <MemberAdd></MemberAdd>
+    <div class="container">
+      <memberList></memberList>
+    </div>
+    
+    
 </template>
 
 <script>
