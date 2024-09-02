@@ -6,7 +6,7 @@
 
 <template>
   <div
-    class="adminTypes d-block position-relative border border-1 border-dark m-1 shadow"
+    class="adminTypes position-relative border border-1 border-dark m-1 shadow mt-5"
   >
     <div class="d-block w-100 mt-4" :class="line" style="height: 7px"></div>
     <div
@@ -20,7 +20,7 @@
       <slot name="title">這裡是title</slot>
       </div>
     </div>
-    <slot><adminItems>這裡是subtitle</adminItems></slot>
+    <slot></slot>
   </div>
 </template>
 

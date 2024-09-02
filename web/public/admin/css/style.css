@@ -1,0 +1,126 @@
+
+
+/* 何某手寫
+Light
+DemiLight
+Regular (原作者的字重)
+Medium
+SemiBold
+*/
+
+@font-face {
+    font-family: nanifont;
+    src: url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff2) format("woff2")
+    , url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff) format("woff");
+  }
+/* 內海字體
+ExtraLight
+Light
+Regular
+SemiBold
+Bold
+*/
+  @font-face {
+    font-family: naikaifont;
+    src: url(https://cdn.jsdelivr.net/gh/max32002/naikaifont@1.0/webfont/NaikaiFont-Regular-Lite.woff2) format("woff2");
+  }
+
+:root {
+    --color01:#FFFDF9;
+    --color02:#2BB1A6;
+    --color03:#61C0BC;
+    --color04:#ABE9E4;
+    --color05:#BEEBE9;
+    --color06:#8AC6D1;
+    --color07:#8ACFED;
+    --color08:#FFE3ED;
+    --color09:#EDD78A;
+}
+
+  body {
+    font-family: "naikaifont", "nanifont";
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .color-rice {
+    color: var(--color01);
+    text-decoration: none;
+  }
+
+  .color-g1 {
+    color: var(--color02);
+    text-decoration: none;
+  }
+
+  .color-g2 {
+    color: var(--color03);
+    text-decoration: none;
+  }
+
+  .color-g3 {
+    color: var(--color04);
+    text-decoration: none;
+  }
+
+  .color-g4 {
+    color: var(--color05);
+    text-decoration: none;
+  }
+
+  .color-b1 {
+    color: var(--color06);
+    text-decoration: none;
+  }
+
+  .color-b2 {
+    color: var(--color07);
+    text-decoration: none;
+  }
+
+  .color-pink {
+    color: var(--color08);
+    text-decoration: none;
+  }
+
+  .color-yellow {
+    color: var(--color09);
+    text-decoration: none;
+  }
+
+  .bg-w {
+    background-color: var(--color01);
+  }
+
+  .bg-g1 {
+    background-color: var(--color02);
+  }
+
+  .bg-g2 {
+    background-color: var(--color03);
+  }
+
+  .bg-g3 {
+    background-color: var(--color04);
+  }
+
+  .bg-g4 {
+    background-color: var(--color05);
+  }
+
+  .bg-b1 {
+    background-color: var(--color06);
+  }
+
+  .bg-b2 {
+    background-color: var(--color07);
+  }
+
+  .bg-pink {
+    background-color: var(--color08);
+  }
+
+  .bg-yellow {
+    background-color: var(--color09);
+  }

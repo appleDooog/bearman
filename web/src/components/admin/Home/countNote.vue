@@ -1,27 +1,27 @@
 <style>
 
 #countNote .rounded-circle {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 </style>
 
 <template>
   <div
-    class="border border-1 border-dark m-3 rounded-5 mt-3"
+    class="d-block border border-1 border-dark m-5 rounded-5 mt-5"
     id="countNote"
     name="countNote"
   >
-    <div class="row py-3  justify-content-center align-items-center">
+    <div class="row py-3 justify-content-center align-items-center">
       <div
         class="col-md-2 rounded-circle align-content-center"
         :class="bg_color"
       >
-        <i class="fa-4x fa-solid text-white" :class="icon"></i>
+        <i class="fa-3x fa-solid text-white" :class="icon"></i>
       </div>
-      <div class="col-md-6 d-block">
+      <div class="col-lg-6 col-md-8 d-block">
         <div class="h2">{{ title }}</div>
-        <div class="display-5 col-md-12" :class="color"><slot></slot></div>
+        <div class="display-5" :class="color"><slot></slot></div>
       </div>
     </div>
   </div>

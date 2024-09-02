@@ -16,8 +16,8 @@ export default {
 </script> -->
 
 <template>
+  <router-view name="logo"></router-view>
   <router-view></router-view>
-  <router-view name="home"></router-view>
   
   
 </template>

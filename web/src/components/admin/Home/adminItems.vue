@@ -1,14 +1,13 @@
 <style>
 .adminItems {
-  width: 240px;
   height: 60px;
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
   transition: 300ms;
 
   .rounded-circle {
-    width: 40px;
-    height: 40px;
+    width: 15%;
+    height: 70%;
   }
 
   .h4 {
@@ -17,18 +16,18 @@
 }
 
 .adminItems:hover {
-    width: 260px;
+    width: 250px;
     margin-right: -20px;
 }
 
 </style>
 <template>
   <div
-    class="adminItems d-block border border-1 border-dark bg-white mt-5 ms-4"
+    class="adminItems d-block border border-1 border-dark bg-white mt-5 ms-4 shadow-sm"
   >
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col-md-9 text-center h4"><slot></slot></div>
-      <div class="col-md-2 rounded-circle me-3"></div>
+      <div class="col-md-2 rounded-circle me-3" :style="style"></div>
     </div>
   </div>
 </template>
@@ -36,6 +35,7 @@
     export default {
         name: 'adminItems',
         props: {
+          style: Object,
         }
     }
 </script>
