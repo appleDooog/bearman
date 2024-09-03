@@ -6,7 +6,7 @@
 
 <template>
   <div
-    class="adminTypes position-relative border border-1 border-dark m-1 shadow mt-5"
+    class="adminTypes position-relative border border-1 border-dark m-1 shadow mt-5 bg-white"
   >
     <div class="d-block w-100 mt-4" :class="line" style="height: 7px"></div>
     <div

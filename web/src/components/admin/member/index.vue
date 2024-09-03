@@ -1,10 +1,10 @@
 <template>
-  <div>aaa</div>
+  <div class="text-center">aaa</div>
 </template>
 
 <script>
 
 export default {
-  name: "mamberIndex",
+  name: "mamberPanel",
 };
 </script>

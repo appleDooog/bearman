@@ -29,13 +29,17 @@ const routes = [
         ),
       default: () => import("../components/admin/home.vue"),
     },
-    children: [
-      {
-        name: "member",
-        path: "member",
-        components: () => import('../components/admin/member/index.vue')
-      },
-    ],
+  },
+  {
+    path: "/admin/member",
+    name: "memberPanel",
+    components: {
+      logo: () =>
+        import(
+          "../components/admin/Home/adminLogo.vue"
+        ),
+      default: () => import("../components/admin/member/index.vue"),
+    },
   },
 ];
 
