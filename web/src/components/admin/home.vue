@@ -54,14 +54,14 @@
           <template #title> 會員管理 </template>
           <ul>
             <li class="list-unstyled">
-              <RouterLink
-                to="../admin/member"
+              <router-link 
+                to="/admin/member"
                 class="text-decoration-none link-dark"
               >
                 <adminItems style="background-color: #128d25">
                   會員列表
                 </adminItems>
-              </RouterLink>
+              </router-link>
             </li>
           </ul>
         </adminTypes>
@@ -88,6 +88,7 @@ import adminLogo from "./Home/adminLogo.vue";
 import adminTypes from "./Home/adminTypes.vue";
 import countNote from "./Home/countNote.vue";
 import adminItems from "./Home/adminItems.vue";
+import router from "@/router";
 export default {
   name: "home",
   data() {

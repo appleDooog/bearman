@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="row w-100">
       <div class="card mt-3">
         <div class="card-header">
           <h2>會員列表</h2>

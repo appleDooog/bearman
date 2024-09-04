@@ -23,9 +23,9 @@
       <div class="text-secondary lh-lg">後台管理系統 v1.</div>
     </div>
     <div class="col-md-2 align-content-center">
-      <a href="#" class="me-4"
+      <RouterLink to="/" class="me-4"
         ><i class="link-secondary fa-solid fa-2xl fa-shop"></i
-      ></a>
+      ></RouterLink>
       <a href="#" class="btn btn-outline-success color-g2 btn-lg fw-bold"
         >登 出</a
       >
