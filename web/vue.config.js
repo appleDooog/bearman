@@ -21,6 +21,7 @@ module.exports = {
       template: "public/index.html",
       // output as dist/index.html
       filename: "index.html",
+      title: "BearMan 遠雄音樂",
     },
     admin: {
       entry: "src/mainAdmin.js",

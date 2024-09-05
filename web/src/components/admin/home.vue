@@ -122,7 +122,7 @@ export default {
       //     ],
       //   },
       // ],
-      count01: 1,
+      count01: 0,
       count02: 2,
     };
   },
@@ -133,7 +133,8 @@ export default {
     adminItems,
   },
   methods: {
-    getMemberCount() {},
+    getMemberCount() {
+    },
     getOrderCount() {},
   },
 };

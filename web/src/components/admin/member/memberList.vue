@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="row w-100">
       <div class="card mt-3">
         <div class="card-header">
@@ -8,7 +7,16 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-2">
-              <button type="button" class="btn btn-primary">新增</button>
+              <RouterLink :to="{ name: 'add' }">
+                <button type="button" class="btn btn-primary">新增</button>
+              </RouterLink>
+            </div>
+            <div class="col-md-2">
+              <RouterLink :to="{ name: 'edit' }"
+                ><button type="button" class="btn btn-warning">
+                  修改
+                </button>
+              </RouterLink>
             </div>
           </div>
           <div class="row mt-3">
@@ -23,10 +31,11 @@
                   <th>會員等級</th>
                   <th>會員狀態</th>
                   <th>備註</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="item in datalist" :key="item.id">
+                <tr v-for="item in datalist" :key="item.id" class=" align-baseline">
                   <td>{{ item.id }}</td>
                   <td>{{ item.name }}</td>
                   <td>{{ item.address }}</td>
@@ -35,10 +44,15 @@
                   <td>{{ item.level }}</td>
                   <td>{{ item.active }}</td>
                   <td>{{ item.remark }}</td>
-                  <td class="d-flex justify-content-around">
-                    <button type="button" class="btn btn-outline-warning me-2">
-                      修改
-                    </button>
+                  <td class="d-flex justify-content-around px-3">
+                    <RouterLink :to="{ name: 'edit' }"
+                      ><button
+                        type="button"
+                        class="btn btn-outline-warning"
+                      >
+                        修改
+                      </button>
+                    </RouterLink>
                     <button type="button" class="btn btn-outline-danger">
                       刪除
                     </button>
@@ -50,7 +64,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -60,16 +73,18 @@ export default {
   data: function () {
     return {
       datalist: [],
+      memberCount: 0,
     };
   },
   methods: {
     getlist() {
       axios
-        .get("http://127.0.0.1:8000/admin/member/list")
+        .get("http://127.0.0.1:8000/api/admin/member/list")
         .then((res) => {
           // 當請求成功時
-          // console.log(res.data);
-          this.datalist = res.data;
+          console.log(res.data);
+          this.datalist = res.data.list;
+          this.memberCount = res.data.count;
         })
         .catch(function (error) {
           // 請求失敗時

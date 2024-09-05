@@ -11,7 +11,8 @@ class AdminMemberController extends Controller
     public function list()
     {
         $list = Member::get();
-        return response()->json($list);
+        $count = $list->count();
+        return response()->json(['list' => $list, 'count' => $count]);
     }
 
     public function insert(Request $req)

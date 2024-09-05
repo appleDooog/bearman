@@ -5,7 +5,6 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: App
   },
   {
     path: "/about",
@@ -34,12 +33,26 @@ const routes = [
     path: "/admin/member",
     name: "memberPanel",
     components: {
-      logo: () =>
-        import(
-          "../components/admin/Home/adminLogo.vue"
-        ),
+      logo: () => import("../components/admin/Home/adminLogo.vue"),
       default: () => import("../components/admin/member/index.vue"),
     },
+    children: [
+      {
+        name: "list",
+        path: "",
+        component: () => import("../components/admin/member/memberList.vue"),
+      },
+      {
+        name: "add",
+        path: "add",
+        component: () => import("../components/admin/member/memberAdd.vue"),
+      },
+      {
+        name: "edit",
+        path: "edit",
+        component: () => import("../components/admin/member/memberEdit.vue"),
+      },
+    ],
   },
 ];
 
