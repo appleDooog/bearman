@@ -1,17 +1,24 @@
 <template>
-  <div class="row">
-    <div class="col-md-2"><Menu></Menu></div>
-    <div class="col-md-10 mt-3 text-center"><RouterView></RouterView></div>
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="row justify-content-center">
+        <div class="col-md-2 d-none d-md-block"><Menu></Menu></div>
+      <div class="col-md-10 mt-3">
+        <RouterView></RouterView>
+      </div>
+      </div>
+      
+    </div>
   </div>
 </template>
 
 <script>
-import Menu from '../menu.vue';
+import Menu from "../menu.vue";
 
 export default {
   name: "mamberPanel",
   components: {
-    Menu
-  }
+    Menu,
+  },
 };
 </script>

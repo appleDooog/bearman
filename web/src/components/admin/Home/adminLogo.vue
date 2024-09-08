@@ -1,9 +1,9 @@
 <style>
-.btn-outline-success {
+.adminLogo .btn-outline-success {
   border-color: var(--color03);
 }
 
-.btn-outline-success:hover {
+.adminLogo .btn-outline-success:hover {
   background-color: var(--color03);
   border-color: var(--color03);
 }
@@ -11,24 +11,24 @@
 
 <template>
   <div
-    class="row vw-100 justify-content-center border-bottom border-2"
+    class="adminLogo row justify-content-around border-bottom border-2"
     style="height: 192px"
   >
-    <div class="col-md-9 align-content-center">
-      <RouterLink to="/admin" replace class=" text-decoration-none">
+    <div class="col col-md-9 align-content-center">
+      <RouterLink to="/admin" replace class="text-decoration-none">
         <div class="display-3 color-g1" style="font-family: nanifont">
           遠熊駕駛艙
         </div>
       </RouterLink>
       <div class="text-secondary lh-lg">後台管理系統 v1.</div>
     </div>
-    <div class="col-md-2 align-content-center text-end">
-      <RouterLink to="/admin" replace class="me-4"
-        ><i class="link-secondary fa-solid fa-2xl fa-shop"></i
+    <div class="col-4 col-md-1 align-items-center d-flex">
+      <RouterLink to="/admin" replace
+        ><i class="link-secondary fa-solid fa-2xl fa-shop d-none d-sm-inline-block"></i
       ></RouterLink>
-      <a href="#" class="btn btn-outline-success color-g2 btn-lg fw-bold"
-        >登 出</a
-      >
+      <button class="btn btn-outline-success color-g2 btn-lg fw-bold ms-auto">
+        登出
+      </button>
     </div>
   </div>
 </template>

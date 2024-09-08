@@ -5,7 +5,7 @@
       class="col-md-8 d-flex justify-content-around"
       style="padding-top: 70px"
     >
-      <div class="row">
+      <div class="row justify-content-around">
         <adminTypes line="bg-pink" style="z-index: 4;">
           <template #title>網站管理 </template>
           <ul>
@@ -93,35 +93,7 @@ export default {
   name: "home",
   data() {
     return {
-      // datalist: [
-      //   {
-      //     id: "1",
-      //     title: "網站管理",
-      //     items: [
-      //       {
-      //         id: "1",
-      //         title: "首頁管理",
-      //         color: "#000000",
-      //       },
-      //       {
-      //         id: "2",
-      //         title: "文章管理",
-      //         color: "#cccccc",
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     id: "2",
-      //     title: "商店管理",
-      //     items: [
-      //       {
-      //         items: "1",
-      //         title: "商品管理",
-      //         color: "#f1f1f1",
-      //       },
-      //     ],
-      //   },
-      // ],
+      datalist: [],
       count01: 0,
       count02: 2,
     };

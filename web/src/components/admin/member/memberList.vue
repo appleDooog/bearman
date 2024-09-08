@@ -1,21 +1,19 @@
 <template>
-    <div class="row w-100">
+    <div class="text-center">
       <div class="card mt-3">
         <div class="card-header">
           <h2>會員列表</h2>
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1">
               <RouterLink :to="{ name: 'add' }">
                 <button type="button" class="btn btn-primary">新增</button>
               </RouterLink>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <RouterLink :to="{ name: 'edit' }"
-                ><button type="button" class="btn btn-warning">
-                  修改
-                </button>
+                ><button type="button" class="btn btn-warning">修改</button>
               </RouterLink>
             </div>
           </div>
@@ -35,7 +33,11 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="item in datalist" :key="item.id" class=" align-baseline">
+                <tr
+                  v-for="item in datalist"
+                  :key="item.id"
+                  class="align-baseline"
+                >
                   <td>{{ item.id }}</td>
                   <td>{{ item.name }}</td>
                   <td>{{ item.address }}</td>
@@ -46,10 +48,7 @@
                   <td>{{ item.remark }}</td>
                   <td class="d-flex justify-content-around px-3">
                     <RouterLink :to="{ name: 'edit' }"
-                      ><button
-                        type="button"
-                        class="btn btn-outline-warning"
-                      >
+                      ><button type="button" class="btn btn-outline-warning">
                         修改
                       </button>
                     </RouterLink>
@@ -76,6 +75,9 @@ export default {
       memberCount: 0,
     };
   },
+  mounted() {
+    this.getlist();
+  },
   methods: {
     getlist() {
       axios
@@ -91,9 +93,6 @@ export default {
           console.log(error);
         });
     },
-  },
-  mounted() {
-    this.getlist();
   },
 };
 </script>

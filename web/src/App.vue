@@ -1,11 +1,11 @@
 <template>
   <h1 class="text-center mt-3">網站首頁</h1>
-    <div class="row text-center">
-      <div class="col-md-3 h2">
+    <div class="row text-center vw-100">
+      <div class="col-md-2 h2">
         測試元件
         <Menu></Menu>
       </div>
-      <div class="col-md-8 h2">
+      <div class="col-md-9 h2">
         測試元件2
         <RouterView></RouterView>
       </div>
