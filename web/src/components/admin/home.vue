@@ -89,6 +89,7 @@ import adminTypes from "./Home/adminTypes.vue";
 import countNote from "./Home/countNote.vue";
 import adminItems from "./Home/adminItems.vue";
 import router from "@/router";
+import { apiMemberList } from "@/api";
 export default {
   name: "home",
   data() {
@@ -105,9 +106,18 @@ export default {
     adminItems,
   },
   methods: {
-    getMemberCount() {
+    async getMemberCount() {
+      try {
+        const res = await apiMemberList({type: 'count'});
+        this.count01 = res.data.count;
+      } catch (error) {
+        console.log(error);
+      }
     },
     getOrderCount() {},
+  },
+  mounted() {
+    this.getMemberCount();
   },
 };
 </script>

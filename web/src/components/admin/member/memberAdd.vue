@@ -5,9 +5,9 @@
         <button type="button" class="btn btn-primary">上一頁</button>
       </RouterLink>
     </div>
-    <div class="row mt-3">
+    <div class="row my-3">
       <div class="col-md-12">
-        <form action="insert" id="memberAdd">
+        <form @submit.prevent="handleSubmit" id="memberAdd">
           <div class="card">
             <div class="card-body">
               <div class="h1 text-center mb-3">新增會員</div>
@@ -34,7 +34,7 @@
               <div class="row mt-3">
                 <label
                   for="password"
-                  class="form-label col-md-2 justify-content-center align-content-center text-end"
+                  class="form-label col-md-2 justify-content-center align-baseline text-end"
                   >密碼</label
                 >
                 <div class="col-md-3">
@@ -42,13 +42,17 @@
                     type="text"
                     name="password"
                     id="password"
-                    placeholder="英數6-10字"
+                    placeholder="密碼長度六位"
                     class="form-control"
                     v-model="password"
-                    @input="passwordVaild"
-                    :class="{'is-vaild': isVaildPassword}"
+                    @input="passwordValid"
+                    :class="{
+                      'is-valid': isValidPassword,
+                      'is-invalid': !isValidPassword,
+                    }"
                     required
                   />
+                  <div class="invalid-feedback">密碼格式不符, 請設定長度大於六位之英數混合密碼</div>
                 </div>
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
@@ -56,7 +60,7 @@
               <div class="row mt-3">
                 <label
                   for="passwordchk"
-                  class="form-label col-md-2 justify-content-center align-content-center text-end"
+                  class="form-label col-md-2 justify-content-center align-baseline text-end"
                   >確認密碼</label
                 >
                 <div class="col-md-3">
@@ -66,8 +70,17 @@
                     id="passwordchk"
                     placeholder="再次確認密碼"
                     class="form-control"
+                    v-model="passwordchk"
+                    @input="passwordChecked"
+                    :class="{
+                      'is-valid': ispasswordchked,
+                      'is-invalid': !ispasswordchked,
+                    }"
                     required
                   />
+                  <div class="invalid-feedback">
+                    請確認輸入內容是否與密碼相同
+                  </div>
                 </div>
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
@@ -93,7 +106,7 @@
               <div class="row mt-3">
                 <label
                   for="tel"
-                  class="form-label col-md-2 justify-content-center align-content-center text-end"
+                  class="form-label col-md-2 justify-content-center align-baseline text-end"
                   >聯絡電話</label
                 >
                 <div class="col-md-8">
@@ -103,9 +116,12 @@
                     id="tel"
                     placeholder="ex. 23456789、0987654321"
                     class="form-control"
-                    v-model.lazy.trim="address"
+                    v-model.trim="tel"
+                    @input="telChecked"
+                    :class="{'is-valid': isValidTel, 'is-invalid': !isValidTel}"
                     required
                   />
+                  <div class=" invalid-feedback">請輸入有效電話號碼</div>
                 </div>
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
@@ -144,7 +160,7 @@
                 </div>
               </div>
               <div class="row mt-3 justify-content-center">
-                <div class="col-md-1 text-end pe-0">
+                <div class=" col-1 col-md-1 text-end pe-0">
                   <input
                     type="checkbox"
                     name="privateChk"
@@ -153,7 +169,7 @@
                     required
                   />
                 </div>
-                <label for="privateChk" class="form-check-label col-7 ps-2"
+                <label for="privateChk" class=" h5 form-check-label col-5 ps-2"
                   >我已知曉並同意遵守《會員守則》及《隱私條款》相關內容。</label
                 >
               </div>
@@ -170,26 +186,61 @@
 </template>
 
 <script>
+
 export default {
   name: "memberAdd",
   data() {
     return {
       name: "",
       password: "",
-      isVaildPassword: "",
+      isValidPassword: false,
+      passwordchk: "",
+      ispasswordchked: false,
       address: "",
       tel: "",
+      isValidTel:false,
       email: "",
       remark: "",
+      data: 0,
     };
   },
-  methods:{
-    passwordVaild(){
-      if(this.password>6){
-        return this.isVaildPassword = true;
-      }
-      return this.isVaildPassword = false;
+  methods: {
+    passwordValid() {
+      if (this.password.length >= 6) {
+        this.isValidPassword = true;
+      } else 
+        this.isValidPassword = false;
     },
+    passwordChecked(){
+      if(this.passwordchk === this.password){
+        this.ispasswordchked = true;
+      }else{
+        this.ispasswordchked = false;
+      }
+    },
+    telChecked(){
+      if(this.tel.length>=7) {
+        this.isValidTel = true;
+      }else{
+        this.isValidTel = false;
+      }
+    },
+    handleSubmit(){
+      if(this.isValidPassword){
+        if(this.ispasswordchked){
+          if(this.isValidTel){
+            this.data++;
+            console.log('data'+this.data);
+          }else{
+            alert("電話格式錯誤");
+          }
+        }else{
+          alert("請確認密碼無誤");
+        }
+      }else{
+        alert("密碼格式錯誤");
+      }
+    }
   },
 };
 </script>
