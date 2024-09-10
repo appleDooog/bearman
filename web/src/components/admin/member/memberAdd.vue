@@ -24,7 +24,7 @@
                     id="name"
                     placeholder="ex. 王大明"
                     class="form-control"
-                    v-model.lazy.trim="name"
+                    v-model.lazy.trim="memberInfo.name"
                     required
                   />
                 </div>
@@ -44,7 +44,7 @@
                     id="password"
                     placeholder="密碼長度六位"
                     class="form-control"
-                    v-model="password"
+                    v-model="memberInfo.password"
                     @input="passwordValid"
                     :class="{
                       'is-valid': isValidPassword,
@@ -52,7 +52,9 @@
                     }"
                     required
                   />
-                  <div class="invalid-feedback">密碼格式不符, 請設定長度大於六位之英數混合密碼</div>
+                  <div class="invalid-feedback">
+                    密碼格式不符, 請設定長度大於六位之英數混合密碼
+                  </div>
                 </div>
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
@@ -97,7 +99,7 @@
                     id="address"
                     placeholder="ex. 407台中市西屯區重慶路256號"
                     class="form-control"
-                    v-model.lazy.trim="address"
+                    v-model.lazy.trim="memberInfo.address"
                     required
                   />
                 </div>
@@ -116,12 +118,15 @@
                     id="tel"
                     placeholder="ex. 23456789、0987654321"
                     class="form-control"
-                    v-model.trim="tel"
+                    v-model.trim="memberInfo.tel"
                     @input="telChecked"
-                    :class="{'is-valid': isValidTel, 'is-invalid': !isValidTel}"
+                    :class="{
+                      'is-valid': isValidTel,
+                      'is-invalid': !isValidTel,
+                    }"
                     required
                   />
-                  <div class=" invalid-feedback">請輸入有效電話號碼</div>
+                  <div class="invalid-feedback">請輸入有效電話號碼</div>
                 </div>
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
@@ -138,7 +143,7 @@
                     id="email"
                     placeholder="請輸入電子信箱"
                     class="form-control"
-                    v-model.lazy.trim="email"
+                    v-model.lazy.trim="memberInfo.email"
                   />
                 </div>
               </div>
@@ -155,12 +160,12 @@
                     id="remark"
                     placeholder="ex.要開統編...等"
                     class="form-control"
-                    v-model.lazy.trim="remark"
+                    v-model.lazy.trim="memberInfo.remark"
                   />
                 </div>
               </div>
               <div class="row mt-3 justify-content-center">
-                <div class=" col-1 col-md-1 text-end pe-0">
+                <div class="col-1 col-md-1 text-end pe-0">
                   <input
                     type="checkbox"
                     name="privateChk"
@@ -169,7 +174,7 @@
                     required
                   />
                 </div>
-                <label for="privateChk" class=" h5 form-check-label col-5 ps-2"
+                <label for="privateChk" class="h5 form-check-label col-5 ps-2"
                   >我已知曉並同意遵守《會員守則》及《隱私條款》相關內容。</label
                 >
               </div>
@@ -186,61 +191,71 @@
 </template>
 
 <script>
+import { apiMemberAdd } from "@/api";
 
 export default {
   name: "memberAdd",
   data() {
     return {
-      name: "",
-      password: "",
-      isValidPassword: false,
+      memberInfo: {
+        name: "",
+        password: "",
+        address: "",
+        tel: "",
+        email: "",
+        remark: "",
+      },
       passwordchk: "",
+      isValidPassword: false,
       ispasswordchked: false,
-      address: "",
-      tel: "",
-      isValidTel:false,
-      email: "",
-      remark: "",
-      data: 0,
+      isValidTel: false,
     };
   },
   methods: {
     passwordValid() {
-      if (this.password.length >= 6) {
+      if (this.memberInfo.password.length >= 6) {
         this.isValidPassword = true;
-      } else 
-        this.isValidPassword = false;
+      } else this.isValidPassword = false;
     },
-    passwordChecked(){
-      if(this.passwordchk === this.password && this.passwordchk != ""){
+    passwordChecked() {
+      if (
+        this.passwordchk === this.memberInfo.password &&
+        this.passwordchk != ""
+      ) {
         this.ispasswordchked = true;
-      }else{
+      } else {
         this.ispasswordchked = false;
       }
     },
-    telChecked(){
-      if(this.tel.length>=7) {
+    telChecked() {
+      if (this.memberInfo.tel.length >= 7) {
         this.isValidTel = true;
-      }else{
+      } else {
         this.isValidTel = false;
       }
     },
-    handleSubmit(){
-      if(this.isValidPassword){
-        if(this.ispasswordchked){
-          if(this.isValidTel){
-            this.data++;
-            console.log('data'+this.data);
-          }else{
+    handleSubmit() {
+      if (this.isValidPassword) {
+        if (this.ispasswordchked) {
+          if (this.isValidTel) {
+            apiMemberAdd(this.memberInfo)
+              .then((res) => {
+                alert("已新增");
+                this.$router.replace({name: 'list'});
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else {
             alert("電話格式錯誤");
           }
-        }else{
+        } else {
           alert("請確認密碼無誤");
         }
-      }else{
+      } else {
         alert("密碼格式錯誤");
       }
-    }
+    },
   },
 };
 </script>
