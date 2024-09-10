@@ -47,7 +47,7 @@
                 <td>{{ item.active }}</td>
                 <td>{{ item.remark }}</td>
                 <td class="d-flex justify-content-around px-3">
-                  <RouterLink :to="{ name: 'edit' }"
+                  <RouterLink :to="{ name: 'edit', params:{id: item.id}}"
                     ><button type="button" class="btn btn-outline-warning">
                       修改
                     </button>
@@ -72,15 +72,14 @@ export default {
   data: function () {
     return {
       datalist: [],
-      memberCount: 0,      
     };
   },
-  
   methods: {
     async getlist() {
       try {
-        const res = await apiMemberList({type:'list'});
+        const res = await apiMemberList({ type: "list" });
         this.datalist = res.data.list;
+        console.log(res.data.list);
       } catch (err) {
         console.log(err);
       }

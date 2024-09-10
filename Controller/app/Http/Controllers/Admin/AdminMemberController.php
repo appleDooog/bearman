@@ -39,6 +39,12 @@ class AdminMemberController extends Controller
         }
         $list->save();
         
-        return response()->json(['state'=>'新增成功']);
+        return response()->json(['state'=>'true']);
+    }
+
+    public function edit(Request $req)
+    {
+        $list = Member::find($req->id);
+        return response()->json(['state'=>'true', 'list'=>$list]);
     }
 }

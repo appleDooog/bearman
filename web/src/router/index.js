@@ -49,7 +49,7 @@ const routes = [
       },
       {
         name: "edit",
-        path: "edit",
+        path: "edit/:id?",
         component: () => import("../components/admin/member/memberEdit.vue"),
       },
     ],

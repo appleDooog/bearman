@@ -212,7 +212,7 @@ export default {
         this.isValidPassword = false;
     },
     passwordChecked(){
-      if(this.passwordchk === this.password){
+      if(this.passwordchk === this.password && this.passwordchk != ""){
         this.ispasswordchked = true;
       }else{
         this.ispasswordchked = false;

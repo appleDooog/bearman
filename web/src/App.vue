@@ -5,8 +5,12 @@
         測試元件
         <Menu></Menu>
       </div>
-      <div class="col-md-9 h2">
+      <div class="col-md-9">
         測試元件2
+        <div class=" vh-100 align-content-center">
+          <login></login>
+        </div>
+        
         <RouterView></RouterView>
       </div>
     </div>
@@ -15,14 +19,14 @@
 </template>
 
 <script>
-import memberList from "@/components/admin/member/memberList.vue";
+import login from "./components/admin/login.vue"
 import { RouterLink } from "vue-router";
 import Menu from "./components/admin/menu.vue";
 
 export default {
   name: "App",
   components: {
-    memberList,
+    login,
     Menu
   },
 };

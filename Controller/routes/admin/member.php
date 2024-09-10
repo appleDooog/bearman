@@ -6,4 +6,5 @@ use Illuminate\Support\Facades\Route;
 Route::group(["prefix"=>"admin/member"],function(){
     Route::post("list",[AdminMemberController::class,"list"]);
     Route::post("insert",[AdminMemberController::class,"insert"]);
+    Route::post("edit/{id}",[AdminMemberController::class,"edit"]);
 });
