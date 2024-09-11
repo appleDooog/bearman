@@ -21,7 +21,7 @@ const adminManagerApi = axios.create({
   baseURL: "http://127.0.0.1:8000/api/admin/manager",
 });
 
-export const apiManagerValid = () => adminManagerApi.get("/code");
+export const apiManagerCaptcha = () => adminManagerApi.get("/code");
 export const apiManagerLogin = (data) => adminManagerApi.post("/login", data);
 
 

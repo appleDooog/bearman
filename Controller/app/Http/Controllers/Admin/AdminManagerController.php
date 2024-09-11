@@ -14,7 +14,7 @@ class AdminManagerController extends Controller
 
 
     public function code(){
-        $code = app('captcha')->create('default', true);
+        $code = app('captcha')->create('flat', true);
         return Response::json(['state'=>'success', 'code'=>101 ,'data'=>$code], 200);
     }
 
