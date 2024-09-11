@@ -18,4 +18,10 @@ class Manager extends Model
         'job',
         'createTime',
     ];
+
+
+    public function getAdmin($username, $password){
+        $manager = self::where("username",$username)->where("password",$password)->first();
+        return $manager;
+    }
 }
