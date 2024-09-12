@@ -33,7 +33,7 @@
                 <div class="row">
                   <img :src="img_src" alt="" class="col-9" />
                   <div class="col align-self-center">
-                    <button class="btn btn-danger rounded-circle">
+                    <button class="btn btn-danger rounded-circle" @click="getCaptcha">
                       <i class="fa fa-refresh"></i>
                     </button>
                   </div>
