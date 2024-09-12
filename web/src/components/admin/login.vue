@@ -28,7 +28,7 @@
               </div>
             </div>
             <button type="submit" class="btn btn-primary mt-3 bg-b2 border-0 me-3">登入</button>
-            <button type="reset" class="btn btn-primary mt-3 bg-pink border-0 color-g2">清除</button>
+            <button type="reset" class="btn btn-warning mt-3 bg-yellow border-0 color-rice">清除</button>
           </div>
         </div>
       </div>

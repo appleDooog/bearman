@@ -21,6 +21,7 @@ const routes = [
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
       default: () => import("../components/admin/home.vue"),
+      icap: () => import("../components/admin/icap.vue")
     },
   },
   {

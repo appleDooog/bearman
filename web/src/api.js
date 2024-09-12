@@ -27,3 +27,13 @@ export const apiManagerLogin = (data) => adminManagerApi.post("/login", data);
 
 // admin/product相關的api
 const adminProductApi = axios.create({});
+
+
+// admin/product相關的api
+const adminIcapApi = axios.create({
+  baseURL: "http://127.0.0.1:8000/api/admin/icap",
+});
+
+
+export const adminIcapGetApi = () => adminIcapApi.get("/list");
+export const adminIcapAddApi = (data) => adminIcapApi.post("/add",data);
