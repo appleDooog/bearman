@@ -14,7 +14,7 @@
                   name="username"
                   id="username"
                   class="form-control"
-                  v-model="username"
+                  v-model="data.username"
                 />
                 <label for="username">帳號</label>
               </div>
@@ -24,34 +24,38 @@
                   name="password"
                   id="password"
                   class="form-control"
-                  v-model="password"
+                  v-model="data.password"
                 />
                 <label for="password">密碼</label>
               </div>
               <div class="col-8">
-                <hr>
+                <hr />
                 <div class="row">
                   <img :src="img_src" alt="" class="col-9" />
                   <div class="col align-self-center">
-                    <button class="btn btn-danger rounded-circle" @click="getCaptcha">
+                    <button
+                      class="btn btn-danger rounded-circle"
+                      @click="getCaptcha"
+                    >
                       <i class="fa fa-refresh"></i>
                     </button>
                   </div>
                 </div>
                 <div class="row mt-3 justify-content-center">
-                  <div class=" col">
+                  <div class="col">
                     <input
                       type="text"
                       class="form-control text-center"
                       placeholder="輸入驗證碼"
+                      v-model="data.userKey"
                     />
                   </div>
                 </div>
               </div>
             </div>
             <button
-              type="submit"
               class="btn btn-primary mt-3 bg-b2 border-0 me-3"
+              @click="userLogin"
             >
               登入
             </button>
@@ -69,16 +73,19 @@
 </template>
 
 <script>
-import { apiManagerCaptcha } from "@/api";
+import { apiManagerCaptcha, apiManagerLogin } from "@/api";
 
 export default {
   name: "adminLogin",
   data() {
     return {
-      username: "",
-      password: "",
+      data: {
+        username: "",
+        password: "",
+        userKey: "",
+        captchaKey: "",
+      },
       img_src: "",
-      captcha_key: "",
     };
   },
   methods: {
@@ -86,10 +93,27 @@ export default {
       try {
         const res = await apiManagerCaptcha();
         this.img_src = res.data.data.img;
+        this.data.captchaKey = res.data.data.key;
+
         console.log(res.data.data);
       } catch (error) {
         console.log(error);
       }
+    },
+
+    userLogin() {
+      const res = apiManagerLogin(this.data)
+        .then((res) => {
+          var valid = res.data.message;
+          if(valid == 'success'){
+            this.$router.push({name: 'admin'});
+          }
+          this.$router.go(0);
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   mounted() {

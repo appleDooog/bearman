@@ -1,8 +1,15 @@
 import axios from "axios";
 
+
+
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
+
+
 // admin/member相關的api
 const adminMemberApi = axios.create({
   baseURL: "http://127.0.0.1:8000/api/admin/member",
+  
 });
 
 // admin/member 相關的api

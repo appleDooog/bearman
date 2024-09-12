@@ -13,29 +13,30 @@ class AdminManagerController extends Controller
     // code寫一支, login寫一支
 
 
-    public function code(){
+    public function code()
+    {
         $code = app('captcha')->create('flat', true);
-        return Response::json(['state'=>'success', 'code'=>101 ,'data'=>$code], 200);
+        return Response::json(['state' => 'success', 'code' => 101, 'data' => $code], 200);
     }
 
 
 
-    public function login(Request $req){
+    public function login(Request $req)
+    {
 
-        if(captcha_check($req->code) == false){
-
-            return back()->withInput()->withErrors(["code"=>"驗證碼錯誤"]);
-            exit;
-
+        $rules = ['userKey' => 'required|captcha_api:' . request('captchaKey') . ", flat"];
+        $validator = validator()->make(request()->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'invalid captcha',
+            ]);
         }
 
         $manager = (new Manager())->getAdmin($req->username, $req->password);
 
-        if(empty($manager)){
-            return back()->withInput()->withErrors(["error"=>"帳號或密碼錯誤"]);
-            exit;
+        if (empty($manager)) {
+            return Response::json(["message" => "username or password wrong"]);
         }
-        session()->put("manager", $manager->userId);
-        return redirect("/admin/home");
+        return Response::json(['message'=>'success']);
     }
 }
