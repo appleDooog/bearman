@@ -78,8 +78,8 @@
                   name="hobbit"
                   id="hobbit"
                   class="form-check-input"
-                  v-model="data.hobbit"
-                  @click="data.hobbit.push('閱讀')"
+                  v-model="hobbit"
+                  @click="hobbit.push('閱讀')"
                 />
                 <label for="hobbit" class="form-check-label">閱讀</label>
               </div>
@@ -89,7 +89,7 @@
                   name="hobbit"
                   id="hobbit"
                   class="form-check-input"
-                  @click="data.hobbit.push('打球')"
+                  @click="hobbit.push('打球')"
                 />
                 <label for="hobbit" class="form-check-label">打球</label>
               </div>
@@ -100,7 +100,7 @@
                   id="hobbit"
                   class="form-check-input"
                   v-model="hobbit"
-                  @click="data.hobbit.push('電影')"
+                  @click="hobbit.push('電影')"
                 />
                 <label for="hobbit" class="form-check-label">電影</label>
               </div>
@@ -111,7 +111,7 @@
                   id="hobbit"
                   class="form-check-input"
                   v-model="hobbit"
-                  @click="data.hobbit.push('爬山')"
+                  @click="hobbit.push('爬山')"
                 />
                 <label for="hobbit" class="form-check-label">爬山</label>
               </div>
@@ -122,7 +122,7 @@
                   id="hobbit"
                   class="form-check-input"
                   v-model="hobbit"
-                  @click="data.hobbit.push('逛街')"
+                  @click="hobbit.push('逛街')"
                 />
                 <label for="hobbit" class="form-check-label">逛街</label>
               </div>
@@ -155,8 +155,10 @@ export default {
         account: "",
         password: "",
         email: "",
-        hobbit: [],
+        hobbit: "",
+        
       },
+      hobbit: [],
       passwordchk: "",
       isAccountOK: false,
       isPwdOK: false,
@@ -197,19 +199,15 @@ export default {
     },
 
     handleSubmit() {
-      console.log(this.data);
+      console.log(this.hobbit);
       if (this.isAccountOK) {
         if (this.isPwdOK) {
           if (this.isPwdchkOK) {
-            console.log(this.data.hobbit.length);
-            if (this.data.hobbit.length > 0 ) {
-              this.data.hobbit.join(",");
-
+            if (this.hobbit.length > 0 ) {
+              this.data.hobbit = this.hobbit.join(',');
             } else {
-              this.data.hobbit.push("無");
+              this.hobbit.push("無");
             }
-
-            console.log(this.data);
 
             Swal.fire({
               title: "確認新增?",

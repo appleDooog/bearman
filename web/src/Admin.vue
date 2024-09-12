@@ -16,9 +16,9 @@ export default {
 </script> -->
 
 <template>
-  <router-view name="logo" class="vw-100"></router-view>
-  <!-- <router-view name="icap" class="vw-100"></router-view> -->
-  <router-view class="vw-100"></router-view>
+  <!-- <router-view name="logo" class="vw-100"></router-view> -->
+  <router-view name="icap" class="vw-100"></router-view>
+  <!-- <router-view class="vw-100"></router-view> -->
   
 </template>
 
