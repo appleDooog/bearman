@@ -15,7 +15,7 @@
     style="height: 192px"
   >
     <div class="col col-md-9 align-content-center">
-      <RouterLink to="/admin" replace class="text-decoration-none">
+      <RouterLink to="/admin/home" replace class="text-decoration-none">
         <div class="display-3 color-g1" style="font-family: nanifont">
           遠熊駕駛艙
         </div>
@@ -23,7 +23,7 @@
       <div class="text-secondary lh-lg">後台管理系統 v1.</div>
     </div>
     <div class="col-4 col-md-1 align-items-center d-flex">
-      <RouterLink to="/admin" replace
+      <RouterLink to="/admin/home" replace
         ><i class="link-secondary fa-solid fa-2xl fa-shop d-none d-sm-inline-block"></i
       ></RouterLink>
       <button class="btn btn-outline-success color-g2 btn-lg fw-bold ms-auto">

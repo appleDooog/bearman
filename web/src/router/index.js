@@ -4,20 +4,18 @@ import App from "@/App.vue";
 const routes = [
   {
     path: "/",
-    name: "home",
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
     path: "/admin",
     name: "admin",
+    components: {
+      // logo: () => import("../components/admin/Home/adminLogo.vue"),
+      default: () => import("../components/admin/login.vue"),
+    },
+  },
+  {
+    path: "/admin/home",
+    name: "home",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
       default: () => import("../components/admin/home.vue"),

@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-center align-content-center">
+    <div class="row justify-content-center align-content-center vh-100">
       <div class="col-4">
         <div class="card">
           <span class="h2 card-header card-title bg-g2 text-white"
@@ -32,7 +32,7 @@
                 <hr />
                 <div class="row">
                   <img :src="img_src" alt="" class="col-9" />
-                  <div class="col align-self-center">
+                  <div class="col align-self-center text-center">
                     <button
                       class="btn btn-danger rounded-circle"
                       @click="getCaptcha"
@@ -46,25 +46,27 @@
                     <input
                       type="text"
                       class="form-control text-center"
-                      placeholder="輸入驗證碼"
+                      placeholder="請輸入驗證碼"
                       v-model="data.userKey"
                     />
                   </div>
                 </div>
               </div>
             </div>
-            <button
-              class="btn btn-primary mt-3 bg-b2 border-0 me-3"
-              @click="userLogin"
-            >
-              登入
-            </button>
-            <button
-              type="reset"
-              class="btn btn-warning mt-3 bg-yellow text-white text- border-0"
-            >
-              清除
-            </button>
+            <div class="text-center">
+              <button
+                class="btn btn-primary mt-3 bg-b2 border-0 me-3"
+                @click="userLogin"
+              >
+                登入
+              </button>
+              <button
+                type="reset"
+                class="btn btn-warning mt-3 bg-yellow text-white text- border-0"
+              >
+                清除
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -105,11 +107,12 @@ export default {
       const res = apiManagerLogin(this.data)
         .then((res) => {
           var valid = res.data.message;
-          if(valid == 'success'){
-            this.$router.push({name: 'admin'});
+          if (valid == "success") {
+            console.log(valid);
+            this.$router.push({ name: 'home' });
+          }else{
+            this.$router.go(0);
           }
-          this.$router.go(0);
-
         })
         .catch((err) => {
           console.log(err);
