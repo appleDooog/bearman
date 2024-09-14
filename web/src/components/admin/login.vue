@@ -76,6 +76,7 @@
 
 <script>
 import { apiManagerCaptcha, apiManagerLogin } from "@/api";
+import axios from "axios";
 
 export default {
   name: "adminLogin",
@@ -104,19 +105,20 @@ export default {
     },
 
     userLogin() {
+
       const res = apiManagerLogin(this.data)
-        .then((res) => {
-          var valid = res.data.message;
-          if (valid == "success") {
-            console.log(valid);
-            this.$router.push({ name: 'home' });
-          }else{
-            this.$router.go(0);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .then((res) => {
+            var valid = res.data.message;
+            if (valid == "success") {
+              console.log(valid);
+              this.$router.push({ name: "home" });
+            } else {
+              this.$router.go(0);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     },
   },
   mounted() {

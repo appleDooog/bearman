@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Response;
 class AdminManagerController extends Controller
 {
 
-    // code寫一支, login寫一支
-
 
     public function code()
     {

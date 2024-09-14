@@ -11,7 +11,6 @@ class Member extends Model
     protected $table = 'memberlist';
     protected $primaryKey = "id";
     protected $fillable = [
-        'id',
         'name',
         'password',
         'address',
@@ -22,4 +21,8 @@ class Member extends Model
         'remark',
         'createTime'
     ];
+
+    protected $hidden = ['createTime'];
+
+
 }

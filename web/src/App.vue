@@ -8,7 +8,6 @@
       <div class="col-md-9">
         測試元件2
         <div class=" vh-100 align-content-center">
-          <login></login>
         </div>
         
         <RouterView></RouterView>
@@ -19,14 +18,12 @@
 </template>
 
 <script>
-import login from "./components/admin/login.vue"
 import { RouterLink } from "vue-router";
 import Menu from "./components/admin/menu.vue";
 
 export default {
   name: "App",
   components: {
-    login,
     Menu
   },
 };

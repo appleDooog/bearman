@@ -7,6 +7,7 @@
       <div class="col-9 align-content-center mt-3">
         <div class="col-md-12">
           <form @submit.prevent="updateSubmit" id="memberAdd">
+            <input type="hidden" name="id" id="id" :value = data.id >
             <div class="card">
               <div class="card-body">
                 <div class="h1 text-center mb-3">會員資料修改</div>
@@ -180,7 +181,7 @@
 // 動態id在router設定, 賦值
 // 參考辛西亞巢狀路由頁面
 //   const id = this.$route.params.id;
-import { apiMemberEdit } from "@/api";
+import { apiMemberEdit, apiMemberUpdate } from "@/api";
 export default {
   data() {
     return {
@@ -200,7 +201,6 @@ export default {
         this.passwordValid();
         this.passwordChecked();
         this.telChecked();
-        console.log(this.data);
       } catch (error) {
         console.log(error);
       }
@@ -218,17 +218,46 @@ export default {
       }
     },
     telChecked() {
-      var tel = this.data.tel.toString().length;
-      if (tel >= 6) {
+      if (this.data.tel.length >= 6) {
         this.isValidTel = true;
       } else {
         this.isValidTel = false;
       }
     },
     clear() {
-
+      this.data.name = ""
+      this.data.password = ""
+      this.data.address = ""
+      this.data.tel = ""
+      this.data.email = ""
+      this.data.remark = ""
+      this.passwordchk = ""
+      this.isValidPassword= ""
+      this.ispasswordchked= ""
+      this.isValidTel= ""
     },
-    updateSubmit() {},
+
+    updateSubmit() {
+      if (this.isValidPassword) {
+        if (this.ispasswordchked) {
+          if (this.isValidTel) {
+            apiMemberUpdate(this.data)
+              .then((res) => {
+                this.$router.replace({name: 'list'});
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else {
+            alert("電話格式錯誤");
+          }
+        } else {
+          alert("請確認密碼無誤");
+        }
+      } else {
+        alert("密碼格式錯誤");
+      }
+    },
   },
   mounted() {
     this.getlist();

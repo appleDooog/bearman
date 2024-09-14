@@ -11,11 +11,6 @@
               <button type="button" class="btn btn-primary">新增</button>
             </RouterLink>
           </div>
-          <div class="col-md-1">
-            <RouterLink :to="{ name: 'edit' }"
-              ><button type="button" class="btn btn-warning">修改</button>
-            </RouterLink>
-          </div>
         </div>
         <div class="row mt-3">
           <table class="table table-bordered table-hover">

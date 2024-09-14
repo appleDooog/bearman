@@ -3,6 +3,7 @@ import axios from "axios";
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 axios.defaults.headers.common["Authorization"] = "AUTH TOKEN";
 axios.defaults.withXSRFToken = true;
+axios.defaults.withCredentials = true;
 
 
 // admin/member相關的api
@@ -16,7 +17,7 @@ const adminMemberApi = axios.create({
 export const apiMemberList = (data) => adminMemberApi.post("/list", data);
 export const apiMemberAdd = (data) => adminMemberApi.post("/insert", data);
 export const apiMemberEdit = (data) => adminMemberApi.post("/edit/" + data);
-export const apiMemberUpdate = (data) => adminMemberApi.post("/update", data);
+export const apiMemberUpdate = (data) => adminMemberApi.put("/update", data);
 export const apiMemberDel = (data) => adminMemberApi.post("/delete", data);
 
 // admin/manager 相關的api

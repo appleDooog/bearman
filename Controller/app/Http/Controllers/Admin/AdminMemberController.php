@@ -5,23 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Member;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-use function PHPSTORM_META\type;
 
 class AdminMemberController extends Controller
 {
     public function list(Request $req)
     {
 
-        $list = Member::get();
+        $list = Member::orderBy('id', 'DESC')->get();
         $count = $list->count();
-        // return response()->json($req);
 
         if($req->type == 'list'){    
-            return response()->json(['list' => $list]);
+            return response()->json(['list' => $list], 200);
         }else if($req->type == 'count'){
-            return response()->json(['count' => $count]);
+            return response()->json(['count' => $count], 200);
         }
         
     }
@@ -39,12 +36,20 @@ class AdminMemberController extends Controller
         }
         $list->save();
         
-        return response()->json(['state'=>'true']);
+        return response()->json(['state'=>'true'], 201);
     }
 
     public function edit(Request $req)
     {
         $list = Member::find($req->id);
-        return response()->json(['state'=>'true', 'list'=>$list]);
+        return response()->json(['state'=>'true', 'list'=>$list], 200);
+    }
+
+    public function update(Request $req)
+    {
+        $list = Member::find($req->id);
+        $list->update($req->all());
+
+        return response()->json(['state'=>'true', 'list'=>$list], 204);
     }
 }
