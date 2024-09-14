@@ -14,6 +14,7 @@ class AdminMemberController extends Controller
 
         $list = Member::orderBy('id', 'DESC')->get();
         $count = $list->count();
+        
 
         if($req->type == 'list'){    
             return response()->json(['list' => $list], 200);

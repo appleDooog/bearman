@@ -26,7 +26,7 @@ const routes = [
     name: "memberPanel",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
-      default: () => import("../components/admin/member/index.vue"),
+      default: () => import("../components/admin/index.vue")
     },
     children: [
       {
@@ -45,6 +45,31 @@ const routes = [
         component: () => import("../components/admin/member/memberEdit.vue"),
       },
     ],
+  },
+  {
+    path: "/admin/manager",
+    name: "managerPanel",
+    components: {
+      logo: () => import("../components/admin/Home/adminLogo.vue"),
+      default: () => import("../components/admin/index.vue")
+    },
+    children: [
+      {
+        name: "adminList",
+        path: "",
+        component: () => import("../components/admin/manager/list.vue"),
+      },
+      {
+        name: "adminAdd",
+        path: ".",
+        component: () => import("../components/admin/manager/add.vue"),
+      },
+      {
+        name: "adminEdit",
+        path: "./:id?",
+        component: () => import("../components/admin/manager/edit.vue"),
+      },
+    ]
   },
 ];
 

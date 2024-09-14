@@ -29,5 +29,11 @@ const adminManagerApi = axios.create({
 export const apiManagerCaptcha = () => adminManagerApi.get("/code");
 export const apiManagerLogin = (data) => adminManagerApi.post("/login", data);
 
+export const apiManagerList = () => adminManagerApi.post("/");
+export const apiManagerShow = (data) => adminManagerApi.post("/" + data);
+export const apiManagerAdd = (data) => adminManagerApi.put("/", data);
+export const apiManagerUpdate = (data) => adminManagerApi.patch("/", data);
+export const apiManagerDel = (data) => adminManagerApi.delete("/", data);
+
 // admin/product相關的api
 const adminProductApi = axios.create({});

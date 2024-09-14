@@ -14,7 +14,7 @@ class AdminManagerController extends Controller
     public function code()
     {
         $code = app('captcha')->create('flat', true);
-        return Response::json(['state' => 'success', 'code' => 101, 'data' => $code], 200);
+        return Response::json(['state' => 'success', 'data' => $code], 200);
     }
 
 
@@ -36,5 +36,32 @@ class AdminManagerController extends Controller
             return Response::json(["message" => "username or password wrong"]);
         }
         return Response::json(['message'=>'success']);
+    }
+
+    
+    public function list(){
+        $list = Manager::orderBy('id', 'DESC')->get();
+        return Response::json(['state' => 'success', 'list' => $list], 200);
+    }
+
+    public function show(Request $req){
+        $list = Manager::find($req->id);
+        return response()->json(['state'=>'true', 'list'=>$list], 200);
+    }
+
+    public function insert(Request $req){
+        Manager::created($req->all);
+        return response()->json(['state'=>'true'], 201);
+    }
+
+    public function update(Request $req){
+        $list = Manager::find($req->id);
+        $list->update($req->all());
+
+        return response()->json(['state'=>'true', 'list'=>$list], 204);
+    }
+
+    public function delete(){
+        
     }
 }

@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import Menu from "../menu.vue";
+import Menu from "./menu.vue";
 
 export default {
-  name: "mamberPanel",
+  name: "memberPanel",
   components: {
     Menu,
   },

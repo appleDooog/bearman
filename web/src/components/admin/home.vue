@@ -55,11 +55,21 @@
           <ul>
             <li class="list-unstyled">
               <router-link 
-                to="/admin/member"
+                to="/admin/member/"
                 class="text-decoration-none link-dark"
               >
                 <adminItems style="background-color: #128d25">
                   會員列表
+                </adminItems>
+              </router-link>
+            </li>
+            <li class="list-unstyled">
+              <router-link 
+                to="/admin/manager/"
+                class="text-decoration-none link-dark"
+              >
+                <adminItems style="background-color: #4BB539">
+                  管理員列表
                 </adminItems>
               </router-link>
             </li>
