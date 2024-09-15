@@ -14,11 +14,11 @@ const adminMemberApi = axios.create({
 // admin/member 相關的api
 // apiMemberList(data)
 // data: {type:'list'}=> 取得所有資料, {type: 'count'}=> 取得總筆數
-export const apiMemberList = (data) => adminMemberApi.post("/list", data);
-export const apiMemberAdd = (data) => adminMemberApi.post("/insert", data);
-export const apiMemberEdit = (data) => adminMemberApi.post("/edit/" + data);
-export const apiMemberUpdate = (data) => adminMemberApi.put("/update", data);
-export const apiMemberDel = (data) => adminMemberApi.post("/delete", data);
+export const apiMemberList = (data) => adminMemberApi.post("/", data);
+export const apiMemberAdd = (data) => adminMemberApi.put("/", data);
+export const apiMemberEdit = (data) => adminMemberApi.post("/" + data);
+export const apiMemberUpdate = (data) => adminMemberApi.patch("/", data);
+export const apiMemberDel = (data) => adminMemberApi.delete("/"+ data);
 
 // admin/manager 相關的api
 // 後台管理員帳號
@@ -33,7 +33,7 @@ export const apiManagerList = () => adminManagerApi.post("/");
 export const apiManagerShow = (data) => adminManagerApi.post("/" + data);
 export const apiManagerAdd = (data) => adminManagerApi.put("/", data);
 export const apiManagerUpdate = (data) => adminManagerApi.patch("/", data);
-export const apiManagerDel = (data) => adminManagerApi.delete("/", data);
+export const apiManagerDel = (data) => adminManagerApi.delete("/"+ data);
 
 // admin/product相關的api
 const adminProductApi = axios.create({});

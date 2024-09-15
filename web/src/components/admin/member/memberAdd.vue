@@ -240,8 +240,16 @@ export default {
           if (this.isValidTel) {
             apiMemberAdd(this.memberInfo)
               .then((res) => {
-                alert("已新增");
-                this.$router.replace({name: 'list'});
+                Swal.fire({
+                  icon: "success",
+                  title: "新增會員成功",
+                  showConfirmButton: true,
+                  confirmButtonText: "太棒了！",
+                  confirmButtonColor: "#2BB1A6"
+                }).then(() => {
+                  this.$router.replace({ name: "list" });
+                });
+                
               })
               .catch((err) => {
                 console.log(err);

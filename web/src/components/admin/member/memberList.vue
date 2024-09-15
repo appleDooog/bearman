@@ -42,12 +42,16 @@
                 <td>{{ item.active }}</td>
                 <td>{{ item.remark }}</td>
                 <td class="d-flex justify-content-around px-3">
-                  <RouterLink :to="{ name: 'edit', params:{id: item.id}}"
+                  <RouterLink :to="{ name: 'edit', params: { id: item.id } }"
                     ><button type="button" class="btn btn-outline-warning">
                       修改
                     </button>
                   </RouterLink>
-                  <button type="button" class="btn btn-outline-danger">
+                  <button
+                    type="button"
+                    @click="doDelete(item.id)"
+                    class="btn btn-outline-danger"
+                  >
                     刪除
                   </button>
                 </td>
@@ -61,7 +65,7 @@
 </template>
 
 <script>
-import { apiMemberList } from "@/api";
+import { apiMemberDel, apiMemberList } from "@/api";
 export default {
   name: "memberList",
   data: function () {
@@ -74,10 +78,41 @@ export default {
       try {
         const res = await apiMemberList({ type: "list" });
         this.datalist = res.data.list;
-        console.log(res.data.list);
       } catch (err) {
         console.log(err);
       }
+    },
+    doDelete(data) {
+      Swal.fire({
+        title: "確定要刪除此會員？",
+        text: "資料刪除後無法回復！",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#2BB1A6",
+        cancelButtonColor: "#EDD78A",
+        confirmButtonText: "對！刪掉這傢伙！",
+        cancelButtonText: "讓我再想想...",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          apiMemberDel(data)
+        .then((res) => {
+          Swal.fire({
+            title: "已刪除",
+            text: "該會員已被刪除",
+            icon: "success",
+          }).then(()=>{
+            this.$router.go(0);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+          
+        }
+      });
+
+
+      
     },
   },
   mounted() {
