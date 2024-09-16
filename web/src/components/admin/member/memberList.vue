@@ -21,7 +21,6 @@
                 <th>聯絡地址</th>
                 <th>聯絡電話</th>
                 <th>電子郵件</th>
-                <th>會員等級</th>
                 <th>會員狀態</th>
                 <th>備註</th>
                 <th></th>
@@ -33,15 +32,14 @@
                 :key="item.id"
                 class="align-baseline"
               >
-                <td>{{ item.id }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.address }}</td>
-                <td>{{ item.tel }}</td>
-                <td>{{ item.email }}</td>
-                <td>{{ item.level }}</td>
-                <td>{{ item.active }}</td>
-                <td>{{ item.remark }}</td>
-                <td class="d-flex justify-content-around px-3">
+                <td class="col-1">{{ item.id }}</td>
+                <td class="col-1">{{ item.name }}</td>
+                <td class="col-2">{{ item.address }}</td>
+                <td class="col-1">{{ item.tel }}</td>
+                <td class="col-2">{{ item.email }}</td>
+                <td class="col-1" v-text="item.active == 1 ? '啟用': '停用'"></td>
+                <td class="col-1">{{ item.remark }}</td>
+                <td class="d-flex justify-content-around col">
                   <RouterLink :to="{ name: 'edit', params: { id: item.id } }"
                     ><button type="button" class="btn btn-outline-warning">
                       修改

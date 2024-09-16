@@ -40,7 +40,7 @@ class AdminManagerController extends Controller
 
     
     public function list(){
-        $list = Manager::orderBy('id', 'DESC')->get();
+        $list = Manager::where('id', "!=", "1")->orderBy('id', 'DESC')->get();
         return Response::json(['state' => 'success', 'list' => $list], 200);
     }
 

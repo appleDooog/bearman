@@ -6,7 +6,7 @@ const routes = [
     path: "/",
   },
   {
-    path: "/admin/",
+    path: "/admin",
     name: "admin",
     components: {
       // logo: () => import("../components/admin/Home/adminLogo.vue"),
@@ -14,7 +14,7 @@ const routes = [
     },
   },
   {
-    path: "/admin/home/",
+    path: "/admin/home",
     name: "home",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
@@ -22,7 +22,7 @@ const routes = [
     },
   },
   {
-    path: "/admin/member/",
+    path: "/admin/member",
     name: "memberPanel",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
@@ -47,7 +47,7 @@ const routes = [
     ],
   },
   {
-    path: "/admin/manager/",
+    path: "/admin/manager",
     name: "managerPanel",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),

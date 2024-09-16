@@ -1,5 +1,5 @@
 <template>
-    <div class="text-center">
+  <div class="text-center">
     <div class="card mt-3">
       <div class="card-header">
         <h2>管理員列表</h2>
@@ -16,8 +16,7 @@
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
-
-                <th>姓名</th>
+                <th>帳號</th>
                 <th>職位</th>
                 <th></th>
               </tr>
@@ -28,11 +27,11 @@
                 :key="item.id"
                 class="align-baseline"
               >
-              <td></td>
-              <td></td>
-
-                <td class="d-flex justify-content-around px-3">
-                  <RouterLink :to="{ name: 'adminEdit', params:{id: item.id}}"
+                <td class="col-5">{{ item.username }}</td>
+                <td class="col-5" v-text="item.job == 0 ? '管理員':'小編'"></td>
+                <td class=" d-flex justify-content-around px-3 col">
+                  <RouterLink
+                    :to="{ name: 'adminEdit', params: { id: item.id } }"
                     ><button type="button" class="btn btn-outline-warning">
                       修改
                     </button>
