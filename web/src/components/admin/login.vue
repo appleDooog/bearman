@@ -76,7 +76,6 @@
 
 <script>
 import { apiManagerCaptcha, apiManagerLogin } from "@/api";
-import axios from "axios";
 
 export default {
   name: "adminLogin",
@@ -97,20 +96,28 @@ export default {
         const res = await apiManagerCaptcha();
         this.img_src = res.data.data.img;
         this.data.captchaKey = res.data.data.key;
-
-        console.log(res.data.data);
       } catch (error) {
         console.log(error);
       }
     },
 
     userLogin() {
-
       const res = apiManagerLogin(this.data)
           .then((res) => {
             var valid = res.data.message;
             if (valid == "success") {
-              console.log(valid);
+              console.log(res.data);
+              var token = res.data.token;
+              var job = res.data.job;
+              var username = this.data.username;
+
+              this.$store.dispatch('auth/setAuth', {
+                "username": username,
+                "token": token,
+                "job": job,
+                'isLogin': true,
+              });
+              
               this.$router.push({ name: "home" });
             } else {
               this.$router.go(0);

@@ -13,7 +13,6 @@
 
 <script>
 import Menu from "./menu.vue";
-
 export default {
   name: "memberPanel",
   components: {

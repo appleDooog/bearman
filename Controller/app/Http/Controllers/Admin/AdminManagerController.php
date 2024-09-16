@@ -35,7 +35,12 @@ class AdminManagerController extends Controller
         if (empty($manager)) {
             return Response::json(["message" => "username or password wrong"]);
         }
-        return Response::json(['message'=>'success']);
+
+        $manager->tokens()->delete();
+
+        $token = $manager->createToken('AUTH TOKEN')->plainTextToken;
+        
+        return Response::json(['message'=>'success', 'token'=>$token, 'job'=>$manager->job]);
     }
 
     

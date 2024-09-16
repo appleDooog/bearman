@@ -35,5 +35,10 @@
 <script>
 export default {
   name: "adminLogo",
+  methods:{
+    logout(){
+      
+    }
+  }
 };
 </script>

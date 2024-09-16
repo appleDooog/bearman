@@ -28,7 +28,6 @@
                     required
                   />
                 </div>
-
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
               <div class="row mt-3">
@@ -245,11 +244,10 @@ export default {
                   title: "新增會員成功",
                   showConfirmButton: true,
                   confirmButtonText: "太棒了！",
-                  confirmButtonColor: "#2BB1A6"
+                  confirmButtonColor: "#2BB1A6",
                 }).then(() => {
                   this.$router.replace({ name: "list" });
                 });
-                
               })
               .catch((err) => {
                 console.log(err);

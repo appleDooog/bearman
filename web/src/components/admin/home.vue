@@ -68,7 +68,7 @@
                 to="/admin/manager/"
                 class="text-decoration-none link-dark"
               >
-                <adminItems style="background-color: #4BB539">
+                <adminItems style="background-color: #4BB539" v-if="job==0">
                   管理員列表
                 </adminItems>
               </router-link>
@@ -107,6 +107,7 @@ export default {
       datalist: [],
       count01: 0,
       count02: 2,
+      job: this.$store.state.auth.job,
     };
   },
   components: {
