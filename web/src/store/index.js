@@ -19,7 +19,7 @@ export default createStore({
   },
   plugins:[createPersistedState({
     // storage: window.localStorage,
-    key: 'data',  //儲存在 localStorage 的 key
+    key: 'bearman',  //儲存在 localStorage 的 key
     storage: {
         getItem: key => ls.get(key),
         setItem: (key, value) => ls.set(key, value),

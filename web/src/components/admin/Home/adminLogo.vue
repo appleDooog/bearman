@@ -24,9 +24,11 @@
     </div>
     <div class="col-4 col-md-1 align-items-center d-flex">
       <RouterLink to="/admin/home" replace
-        ><i class="link-secondary fa-solid fa-2xl fa-shop d-none d-sm-inline-block"></i
+        ><i
+          class="link-secondary fa-solid fa-2xl fa-shop d-none d-sm-inline-block"
+        ></i
       ></RouterLink>
-      <button class="btn btn-outline-success color-g2 btn-lg fw-bold ms-auto">
+      <button class="btn btn-outline-success color-g2 btn-lg fw-bold ms-auto" @click="logout">
         登出
       </button>
     </div>
@@ -35,10 +37,18 @@
 <script>
 export default {
   name: "adminLogo",
-  methods:{
-    logout(){
-      
-    }
-  }
+  methods: {
+    logout() {
+      this.$store.dispatch("auth/setAuth", {
+        username: "",
+        token: "",
+        job: "",
+        isLogin: false,
+      });
+      localStorage.removeItem("bearman");
+      localStorage.removeItem("_secure__ls__metadata");
+      this.$router.push({ name: "admin" });
+    },
+  },
 };
 </script>

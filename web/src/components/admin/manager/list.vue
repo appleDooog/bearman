@@ -50,7 +50,8 @@
 </template>
 
 <script>
-import { apiManagerList } from "@/api";
+import { apiManagerList } from '@/api';
+
 export default {
   name: "managerList",
   data: function () {
@@ -63,7 +64,6 @@ export default {
       try {
         const res = await apiManagerList();
         this.datalist = res.data.list;
-        console.log(res.data.list);
       } catch (err) {
         console.log(err);
       }

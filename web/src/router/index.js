@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import App from "@/App.vue";
+import store from "@/store";
 
 const routes = [
   {
@@ -26,7 +27,7 @@ const routes = [
     name: "memberPanel",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
-      default: () => import("../components/admin/index.vue")
+      default: () => import("../components/admin/index.vue"),
     },
     children: [
       {
@@ -51,7 +52,7 @@ const routes = [
     name: "managerPanel",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
-      default: () => import("../components/admin/index.vue")
+      default: () => import("../components/admin/index.vue"),
     },
     children: [
       {
@@ -69,7 +70,7 @@ const routes = [
         path: "./:id?",
         component: () => import("../components/admin/manager/edit.vue"),
       },
-    ]
+    ],
   },
 ];
 
@@ -77,5 +78,15 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+// router.beforeEach((to) => {
+//   const isLogin = !store.state.auth.isLogin;
+//   const token = store.state.auth.token;
+
+//   if (to.path === "/admin") {
+//     return { name: "admin" };
+//   }
+
+// });
 
 export default router;
