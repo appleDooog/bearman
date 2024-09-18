@@ -98,7 +98,7 @@ import adminLogo from "./Home/adminLogo.vue";
 import adminTypes from "./Home/adminTypes.vue";
 import countNote from "./Home/countNote.vue";
 import adminItems from "./Home/adminItems.vue";
-import router from "@/router";
+import router from "@/router/adminIndex";
 import { apiMemberList } from "@/api";
 export default {
   name: "home",

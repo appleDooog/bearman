@@ -1,5 +1,3 @@
-
-
 /* 何某手寫
 Light
 DemiLight
@@ -9,10 +7,13 @@ SemiBold
 */
 
 @font-face {
-    font-family: nanifont;
-    src: url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff2) format("woff2")
-    , url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff) format("woff");
-  }
+  font-family: nanifont;
+  src:
+    url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff)
+      format("woff");
+}
 /* 內海字體
 ExtraLight
 Light
@@ -20,107 +21,122 @@ Regular
 SemiBold
 Bold
 */
-  @font-face {
-    font-family: naikaifont;
-    src: url(https://cdn.jsdelivr.net/gh/max32002/naikaifont@1.0/webfont/NaikaiFont-Regular-Lite.woff2) format("woff2");
-  }
-
-:root {
-    --color01:#FFFDF9;
-    --color02:#2BB1A6;
-    --color03:#61C0BC;
-    --color04:#ABE9E4;
-    --color05:#BEEBE9;
-    --color06:#8AC6D1;
-    --color07:#8ACFED;
-    --color08:#FFE3ED;
-    --color09:#EDD78A;
+@font-face {
+  font-family: naikaifont;
+  src: url(https://cdn.jsdelivr.net/gh/max32002/naikaifont@1.0/webfont/NaikaiFont-Regular-Lite.woff2)
+    format("woff2");
 }
 
-  body {
-    font-family: "naikaifont", "nanifont";
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-  }
+:root {
+  --color01: #fffdf9;
+  --color02: #2bb1a6;
+  --color03: #61c0bc;
+  --color04: #abe9e4;
+  --color05: #beebe9;
+  --color06: #8ac6d1;
+  --color07: #8acfed;
+  --color08: #ffe3ed;
+  --color09: #edd78a;
+}
 
-  .color-rice {
-    color: var(--color01);
-    text-decoration: none;
-  }
+body {
+  font-family: "naikaifont", "nanifont";
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
-  .color-g1 {
-    color: var(--color02);
-    text-decoration: none;
-  }
+.color-rice {
+  color: var(--color01);
+  text-decoration: none;
+}
 
-  .color-g2 {
-    color: var(--color03);
-    text-decoration: none;
-  }
+.color-g1 {
+  color: var(--color02);
+  text-decoration: none;
+}
 
-  .color-g3 {
-    color: var(--color04);
-    text-decoration: none;
-  }
+.color-g2 {
+  color: var(--color03);
+  text-decoration: none;
+}
 
-  .color-g4 {
-    color: var(--color05);
-    text-decoration: none;
-  }
+.color-g3 {
+  color: var(--color04);
+  text-decoration: none;
+}
 
-  .color-b1 {
-    color: var(--color06);
-    text-decoration: none;
-  }
+.color-g4 {
+  color: var(--color05);
+  text-decoration: none;
+}
 
-  .color-b2 {
-    color: var(--color07);
-    text-decoration: none;
-  }
+.color-b1 {
+  color: var(--color06);
+  text-decoration: none;
+}
 
-  .color-pink {
-    color: var(--color08);
-    text-decoration: none;
-  }
+.color-b2 {
+  color: var(--color07);
+  text-decoration: none;
+}
 
-  .color-yellow {
-    color: var(--color09);
-    text-decoration: none;
-  }
+.color-pink {
+  color: var(--color08);
+  text-decoration: none;
+}
 
-  .bg-w {
-    background-color: var(--color01);
-  }
+.color-yellow {
+  color: var(--color09);
+  text-decoration: none;
+}
 
-  .bg-g1 {
-    background-color: var(--color02);
-  }
+.bg-w {
+  background-color: var(--color01);
+}
 
-  .bg-g2 {
-    background-color: var(--color03);
-  }
+.bg-g1 {
+  background-color: var(--color02);
+}
 
-  .bg-g3 {
-    background-color: var(--color04);
-  }
+.bg-g2 {
+  background-color: var(--color03);
+}
 
-  .bg-g4 {
-    background-color: var(--color05);
-  }
+.bg-g3 {
+  background-color: var(--color04);
+}
 
-  .bg-b1 {
-    background-color: var(--color06);
-  }
+.bg-g4 {
+  background-color: var(--color05);
+}
 
-  .bg-b2 {
-    background-color: var(--color07);
-  }
+.bg-b1 {
+  background-color: var(--color06);
+}
 
-  .bg-pink {
-    background-color: var(--color08);
-  }
+.bg-b2 {
+  background-color: var(--color07);
+}
 
-  .bg-yellow {
-    background-color: var(--color09);
-  }
+.bg-pink {
+  background-color: var(--color08);
+}
+
+.bg-yellow {
+  background-color: var(--color09);
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.mainlogo {
+  background-image: linear-gradient(
+    to bottom,
+    #61c0bc 0%,
+    #abe9e4 35%,
+    #ffffff00 100%
+  );
+  height: 90vh;
+}

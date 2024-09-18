@@ -1,30 +1,23 @@
 <template>
-  <h1 class="text-center mt-3">網站首頁</h1>
-    <div class="row text-center vw-100">
-      <div class="col-md-2 h2">
-        測試元件
-        <Menu></Menu>
-      </div>
-      <div class="col-md-9">
-        測試元件2
-        <div class=" vh-100 align-content-center">
-        </div>
-        
-        <RouterView></RouterView>
-      </div>
+  <router-view name="mainLogo"></router-view>
+
+  <div class="text-center">
+    <div class="col-md-2 h2"></div>
+    <div class="col-md-9">
+      <div class="align-content-center"></div>
+      <RouterView></RouterView>
     </div>
-    
-    
+  </div>
+  <div>
+    <router-view name="Footer"></router-view>
+  </div>
 </template>
 
 <script>
 import { RouterLink } from "vue-router";
-import Menu from "./components/admin/menu.vue";
 
 export default {
   name: "App",
-  components: {
-    Menu
-  },
+  components: {},
 };
 </script>
