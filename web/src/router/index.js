@@ -4,9 +4,6 @@ import store from "@/store";
 
 const routes = [
   {
-    path: "/",
-  },
-  {
     path: "/admin",
     name: "admin",
     components: {
@@ -79,14 +76,17 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to) => {
-//   const isLogin = !store.state.auth.isLogin;
-//   const token = store.state.auth.token;
+router.beforeEach((to, from) => {
+  const isLogin = store.state.auth.isLogin;
 
-//   if (to.path === "/admin") {
-//     return { name: "admin" };
-//   }
+  if (to.path === "/admin") return;
 
-// });
+  if(!isLogin){
+    return {name: "admin"};
+  }else{
+    return true;
+  }
+  
+})
 
 export default router;
