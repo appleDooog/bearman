@@ -18,6 +18,7 @@ class AdminMemberController extends Controller
 
         if($req->type == 'list'){    
             return response()->json(['list' => $list], 200);
+            
         }else if($req->type == 'count'){
             return response()->json(['count' => $count], 200);
         }

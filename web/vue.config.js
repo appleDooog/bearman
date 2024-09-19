@@ -26,7 +26,7 @@ module.exports = {
     admin: {
       entry: "src/mainAdmin.js",
       // the source template
-      template: "public/index.html",
+      template: "public/adminIndex.html",
       // output as dist/index.html
       filename: "admin.html",
       title: "Admin",

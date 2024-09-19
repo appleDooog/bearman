@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand navbar-light m-0 p-0 navbar-dark">
-    <div class="container">
+  <nav class="navbar navbar-expand-md navbar-light navbar-dark p-0">
+    <div class="container-fluid">
       <button
         class="navbar-toggler"
         type="button"
@@ -48,7 +48,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#">課程介紹</a>
           </li>
-          
         </ul>
       </div>
     </div>
@@ -56,12 +55,12 @@
 </template>
 
 <style>
-.navbar{
-    font-size: 8px;
+.navbar {
+  font-size: 25px;
 }
 
-.dropdown-menu{
-    --bs-dropdown-font-size:1em;
-    --bs-dropdown-min-width:0;
+.dropdown-menu {
+  --bs-dropdown-font-size: 1em;
+  --bs-dropdown-min-width: 0;
 }
 </style>

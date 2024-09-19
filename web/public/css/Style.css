@@ -140,3 +140,11 @@ body {
   );
   height: 90vh;
 }
+
+
+.footer{
+  background-color: #61C0BC;
+  max-height: 510px;
+}
+
+
