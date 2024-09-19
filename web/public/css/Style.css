@@ -27,6 +27,14 @@ Bold
     format("woff2");
 }
 
+
+/* google font
+noto-serif-tc
+*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+
+
 :root {
   --color01: #fffdf9;
   --color02: #2bb1a6;
@@ -40,10 +48,11 @@ Bold
 }
 
 body {
-  font-family: "naikaifont", "nanifont";
+  font-family: "naikaifont", "nanifont", "Noto Sans TC", sans-serif;;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  background-color: #fffdf9;
 }
 
 .color-rice {
@@ -131,7 +140,7 @@ body {
   background-size: cover;
 }
 
-.mainlogo {
+.home {
   background-image: linear-gradient(
     to bottom,
     #61c0bc 0%,
@@ -139,12 +148,38 @@ body {
     #ffffff00 100%
   );
   height: 90vh;
+} 
+
+
+.circle {
+  line-height: 150%;
+  aspect-ratio: 1;
+  display: inline-grid;
+  place-items: center;
+  min-width: 1em;
+  min-height: 1em;
+  padding: .5em;
+  background-color: silver;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 
-
-.footer{
-  background-color: #61C0BC;
-  max-height: 510px;
+/* 卷軸特效 外 .r-box, 內 .roller*/
+.r-box {
+  position: relative;
+  overflow: hidden;
 }
-
-
+.roller {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  width: 100%;
+  transform: translate(0, -100%);
+  transition: transform 900ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.r-box:hover .roller {
+  transform: translate(0, 0);
+}

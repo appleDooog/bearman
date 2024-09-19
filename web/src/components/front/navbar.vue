@@ -13,7 +13,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-lg-0">
+        <ul class="navbar-nav w-75 justify-content-around me-auto mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">首頁</a>
           </li>
@@ -29,7 +29,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Dropdown
+              環境介紹
             </a>
             <ul class="dropdown-menu drop" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Action</a></li>
@@ -43,10 +43,13 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">課程介紹</a>
+            <a class="nav-link" href="#">教學專區</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">課程介紹</a>
+            <a class="nav-link" href="#">樂器商城</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">聯絡我們</a>
           </li>
         </ul>
       </div>

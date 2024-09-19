@@ -5,7 +5,7 @@
 </style>
 
 <template>
-  <div class="footer text-white">
+  <div class="footer text-white bg-g2">
     <div class="container-fluid">
       <div class="row justify-content-center mx-2">
         <div class="col align-content-center ms-5">
@@ -13,8 +13,8 @@
             <div class="col">
               <span class="h1">遠熊樂器 Bearman Music</span>
               <p class="mt-3 h5">
-                電話：04 2316 8209<br />
-                地址：407台中市西屯區重慶路256號 <br />
+                電話：04 2359 2181<br />
+                地址：407台中市西屯區工業一路200號  <br />
                 <br />
                 <a
                   href="https://www.instagram.com/bearman_music/"
