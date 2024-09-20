@@ -11,8 +11,9 @@
           </div>
           <div
             class="bg-cover mt-3 r-box"
-            style="background: cadetblue; height: 250px"
+            style="background: url('img/test/lr_bg02.jpg'); height: 250px"
           >
+          <!-- 回家測試↑↑↑↑↑ -->
             <div class="roller">
               <a href="" class="btn btn-warning">更多資訊</a>
             </div>
