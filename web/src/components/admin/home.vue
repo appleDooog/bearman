@@ -170,7 +170,7 @@ export default {
   },
   mounted() {
     this.getMemberCount();
-    this.chart();
+    // this.chart();
   },
 };
 </script>

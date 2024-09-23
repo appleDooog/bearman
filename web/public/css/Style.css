@@ -141,8 +141,8 @@ body {
 
 .home {
   background-image: linear-gradient(to bottom,
-      #61c0bc 0%,
-      #abe9e4 35%,
+      #ABE9E4 0%,
+      #FBF6DC 75%,
       #ffffff00 100%);
   height: 90vh;
 }
