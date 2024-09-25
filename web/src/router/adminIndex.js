@@ -68,6 +68,21 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/admin/product",
+    name: "productPanel",
+    components: {
+      logo: () => import("../components/admin/Home/adminLogo.vue"),
+      default: () => import("../components/admin/index.vue"),
+    },
+    children: [
+      {
+        name: "productList",
+        path: "",
+        component: () => import("../components/admin/product/item/list.vue"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
@@ -75,17 +90,17 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from) => {
-  const isLogin = store.state.auth.isLogin;
+// router.beforeEach((to, from) => {
+//   const isLogin = store.state.auth.isLogin;
 
-  if (to.path === "/admin") return;
+//   if (to.path === "/admin") return;
 
-  if(!isLogin){
-    return {name: "admin"};
-  }else{
-    return true;
-  }
+//   if(!isLogin){
+//     return {name: "admin"};
+//   }else{
+//     return true;
+//   }
   
-})
+// })
 
 export default router;

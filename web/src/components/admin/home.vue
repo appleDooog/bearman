@@ -16,21 +16,47 @@
                 </adminItems>
               </a>
             </li>
-            <a href="#" class="text-decoration-none link-dark">
-              <adminItems style="background-color: #d03f3f">
-                文章管理
-              </adminItems>
-            </a>
+            <li class="list-unstyled">
+              <a href="#" class="text-decoration-none link-dark">
+                <adminItems style="background-color: #d03f3f">
+                  文章管理
+                </adminItems>
+              </a>
+            </li>
           </ul>
         </adminTypes>
 
         <adminTypes line="bg-yellow" style="z-index: 3">
-          <template #title> 商店管理 </template>
+          <template #title> 商城管理 </template>
           <ul>
             <li class="list-unstyled">
-              <a href="#" class="text-decoration-none link-dark">
+              <RouterLink
+              to="/admin/product"
+                class="text-decoration-none link-dark"
+              >
                 <adminItems style="background-color: #e4b40e">
                   商品管理
+                </adminItems>
+              </RouterLink>
+            </li>
+            <li class="list-unstyled">
+              <a href="#" class="text-decoration-none link-dark">
+                <adminItems style="background-color: #f5c549">
+                  版面管理
+                </adminItems>
+              </a>
+            </li>
+            <li class="list-unstyled">
+              <a href="#" class="text-decoration-none link-dark">
+                <adminItems style="background-color: #f9e475">
+                  輪播圖管理
+                </adminItems>
+              </a>
+            </li>
+            <li class="list-unstyled">
+              <a href="#" class="text-decoration-none link-dark">
+                <adminItems style="background-color: #fff1a8">
+                  側欄管理
                 </adminItems>
               </a>
             </li>
@@ -94,12 +120,11 @@
   </div>
   <div class="container">
     <div class="row mt-3">
-    <div>
-      <canvas id="myChart"></canvas>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
   </div>
-  </div>
-  
 </template>
 <script>
 import adminLogo from "./Home/adminLogo.vue";
@@ -155,15 +180,14 @@ export default {
           },
           plugins: {
             legend: {
-                labels: {
-                    // This more specific font property overrides the global property
-                    font: {
-                        size: 25
-                    }
-                }
-            }
-        }
-          
+              labels: {
+                // This more specific font property overrides the global property
+                font: {
+                  size: 25,
+                },
+              },
+            },
+          },
         },
       });
     },

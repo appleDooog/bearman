@@ -66,7 +66,11 @@ class AdminManagerController extends Controller
         return response()->json(['state'=>'true', 'list'=>$list], 204);
     }
 
-    public function delete(){
-        
+    public function delete(Request $req){
+        $list = Manager::find($req->id);
+        $list->delete();
+
+        return response()->json(['message'=>'success'], 204);
+    
     }
 }
