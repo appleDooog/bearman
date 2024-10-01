@@ -12,6 +12,7 @@ BEARMAN預計將成為一個完整的電商平台，專注於樂器的銷售與�
 - **資料儲存**：vuex-persistedstate
 
 ## 技術亮點
+![image](https://github.com/appleDooog/bearman/blob/main/image/5.jpg)
 ### 後端
 - Laravel 提供 RESTful API 設計，遵循資源導向架構
 - CORS 防護系統
@@ -27,12 +28,13 @@ BEARMAN預計將成為一個完整的電商平台，專注於樂器的銷售與�
 - Axios 與後端 API 通信，進行資料庫互動
 
 ## 功能展示
-### 前台功能
+### 前台功能（預計加入）
+![image](https://github.com/appleDooog/bearman/blob/main/image/3.jpg)
 - 商品瀏覽與篩選（使用元件化的商品卡片、商品篩選工具等）
 - 會員註冊、登入與資料修改
 
 ### 後台功能
-- 商品管理（CRUD 操作，元件化的商品表單和清單）
+![image](https://github.com/appleDooog/bearman/blob/main/image/4.jpg)
 - 會員管理（CRUD 操作）
 - 管理員登入驗證及路由守衛，使用 CAPTCHA 驗證系統
 
