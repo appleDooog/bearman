@@ -1,3 +1,5 @@
+![image](https://github.com/appleDooog/bearman/blob/main/2.jpg)
+
 # BEARMAN遠熊樂器
 
 ## 專案名稱與描述
