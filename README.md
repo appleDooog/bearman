@@ -1,4 +1,4 @@
-![image](https://github.com/appleDooog/bearman/blob/main/2.jpg)
+![image](https://github.com/appleDooog/bearman/blob/main/image/2.jpg)
 
 # BEARMAN遠熊樂器
 
