@@ -1,13 +1,14 @@
 import axios from "axios";
 import store from "./store";
 
+
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 axios.defaults.headers.common["Authorization"] = "AUTH TOKEN";
 axios.defaults.withXSRFToken = true;
 axios.defaults.withCredentials = true;
 
 const adminApi = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/admin",
+  baseURL: "http://192.168.1.123:8081/api/admin",
 });
 
 
@@ -40,10 +41,10 @@ export const apiManagerDel = (data) => adminApi.delete("/manager/"+ data);
 // admin/member 相關的api
 // apiMemberList(data)
 // data: {type:'list'}=> 取得所有資料, {type: 'count'}=> 取得總筆數
-export const apiMemberList = (data) => adminApi.post("/member/", data);
-export const apiMemberAdd = (data) => adminApi.put("/member/", data);
+export const apiMemberList = (data) => adminApi.post("/member", data);
+export const apiMemberAdd = (data) => adminApi.put("/member", data);
 export const apiMemberEdit = (data) => adminApi.post("/member/" + data);
-export const apiMemberUpdate = (data) => adminApi.patch("/member/", data);
+export const apiMemberUpdate = (data) => adminApi.patch("/member", data);
 export const apiMemberDel = (data) => adminApi.delete("/member/"+ data);
 
 

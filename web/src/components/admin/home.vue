@@ -133,44 +133,9 @@ export default {
       }
     },
     getOrderCount() {},
-    chart() {
-      const ctx = document.getElementById("myChart");
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["金牌會員", "銀牌會員", "銅牌會員", "青銅會員", "一般會員"],
-          datasets: [
-            {
-              label: "會員等級統計",
-              data: [1, 2, 3, 1, 4],
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-          plugins: {
-            legend: {
-                labels: {
-                    // This more specific font property overrides the global property
-                    font: {
-                        size: 25
-                    }
-                }
-            }
-        }
-          
-        },
-      });
-    },
   },
   mounted() {
     this.getMemberCount();
-    this.chart();
   },
 };
 </script>
