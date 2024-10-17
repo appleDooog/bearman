@@ -25,13 +25,8 @@
 </template>
 
 <script>
-import adminItems from './adminItems.vue';
-
 export default {
   name: "adminTypes",
-  components: {
-    adminItems
-  },
   props: {
     line: String,
   },

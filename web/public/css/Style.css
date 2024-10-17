@@ -9,11 +9,10 @@ SemiBold
 @font-face {
   font-family: nanifont;
   src:
-    url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff2)
-      format("woff2"),
-    url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff)
-      format("woff");
+    url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff2) format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/max32002/nanifont@1.036/webfont/NaniFont-Light.woff) format("woff");
 }
+
 /* 內海字體
 ExtraLight
 Light
@@ -23,8 +22,7 @@ Bold
 */
 @font-face {
   font-family: naikaifont;
-  src: url(https://cdn.jsdelivr.net/gh/max32002/naikaifont@1.0/webfont/NaikaiFont-Regular-Lite.woff2)
-    format("woff2");
+  src: url(https://cdn.jsdelivr.net/gh/max32002/naikaifont@1.0/webfont/NaikaiFont-Regular-Lite.woff2) format("woff2");
 }
 
 
@@ -48,7 +46,8 @@ noto-serif-tc
 }
 
 body {
-  font-family: "naikaifont", "nanifont", "Noto Sans TC", sans-serif;;
+  font-family: "naikaifont", "nanifont", "Noto Sans TC", sans-serif;
+  ;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -141,34 +140,22 @@ body {
 }
 
 .home {
-  background-image: linear-gradient(
-    to bottom,
-    #61c0bc 0%,
-    #abe9e4 35%,
-    #ffffff00 100%
-  );
+  background-image: linear-gradient(to bottom,
+      #ABE9E4 0%,
+      #FBF6DC 75%,
+      #ffffff00 100%);
   height: 90vh;
-} 
-
-
-.circle {
-  line-height: 150%;
-  aspect-ratio: 1;
-  display: inline-grid;
-  place-items: center;
-  min-width: 1em;
-  min-height: 1em;
-  padding: .5em;
-  background-color: silver;
-  border-radius: 50%;
-  box-sizing: border-box;
 }
+
+
+
 
 /* 卷軸特效 外 .r-box, 內 .roller*/
 .r-box {
   position: relative;
   overflow: hidden;
 }
+
 .roller {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.5);
@@ -180,6 +167,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .r-box:hover .roller {
   transform: translate(0, 0);
 }

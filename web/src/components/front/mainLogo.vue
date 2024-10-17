@@ -8,8 +8,8 @@
 <template>
   <div class="mainlogo">
     <div class="d-flex justify-content-center">
-      <div class="col-3">
-        <img src="@/assets/LOGO/faybear.png" alt="" class="bg-cover" />
+      <div class="col-3 d-flex justify-content-center">
+        <img src="@/assets/LOGO/faybear.png" alt="" class="bg-cover justify-content-center" height="300px" />
       </div>
       <div class="col-9 text-white align-content-center d-flex row row-cols-1">
         <div class=" display-1 ps-3 col" style="letter-spacing: 0.3em">

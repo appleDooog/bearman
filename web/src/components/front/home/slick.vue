@@ -1,8 +1,18 @@
-<style>
-
-</style>
+<style></style>
 <template>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <!-- <div class="container text-center">
+    
+      <button class="btn slick-arrow"></button>
+      <div class="slider center ">
+        <div class="h1">1</div>
+        <div class="h1">2</div>
+        <div class="h1">3</div>
+        <div class="h1">4</div>
+        <div class="h1">5</div>
+      </div>
+    
+  </div> -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -32,5 +42,38 @@
 
 <script>
 export default {
+  methods: {
+    slider() {
+      $(".center").slick({
+        centerMode: true,
+        centerPadding: "60px",
+        slidesToShow: 3,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 3,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 1,
+            },
+          },
+        ],
+      });
+    },
+  },
+
+  mounted() {
+    this.slider();
+  },
 };
 </script>
