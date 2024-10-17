@@ -28,7 +28,7 @@ module.exports = {
       // the source template
       template: "public/adminIndex.html",
       // output as dist/index.html
-      filename: "admin.html",
+      filename: "admin/index.html",
       title: "Admin",
     },
   },

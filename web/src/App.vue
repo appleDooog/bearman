@@ -1,43 +1,24 @@
 <template>
-  <div class="home">
-    <router-view name="mainLogo"></router-view>
-    <div class="">
-      <Slick></Slick>
-    </div>
-    <div class="mt-5">
-      <HomeSection01></HomeSection01>
-    </div>
-    <div class="mt-5">
-      <HomeSection02></HomeSection02>
-    </div>
-    <div class="mt-5">
-      <HomeSection04></HomeSection04>
-    </div>
-    <div class="mt-5">
-      <HomeSection05></HomeSection05>
-    </div>
-    <div class="mt-5">
-    <router-view name="Footer"></router-view>
+  <div class="vh-100 text-center align-content-center fs-1">
+    <img src="./assets/LOGO/Logo-green.png" alt="" width="150px" />
+    <p class=" color-g1 tlt">工事中...</p>
   </div>
-  </div>
-
 </template>
 
-<script>
-import HomeSection01 from "./components/front/home/homeSection01.vue";
-import HomeSection02 from "./components/front/home/homeSection02.vue";
-import HomeSection04 from "./components/front/home/homeSection04.vue";
-import HomeSection05 from "./components/front/home/homeSection05.vue";
-import Slick from "./components/front/home/slick.vue";
+<style>
 
+</style>
+
+<script>
 export default {
   name: "App",
-  components: {
-    Slick,
-    HomeSection01,
-    HomeSection02,
-    HomeSection04,
-    HomeSection05
+  methods: {
+    tlt(){
+      $('.tlt').textillate({ in: { effect: 'bounce', sequence: true, delayScale: 4, }, out:{effect: 'bounce', sequence: true, delayScale: 4,}, loop: true, minDisplayTime: 100
+    });}
   },
+  mounted(){
+    this.tlt();
+  }
 };
 </script>

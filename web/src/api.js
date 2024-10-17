@@ -8,7 +8,7 @@ axios.defaults.withXSRFToken = true;
 axios.defaults.withCredentials = true;
 
 const adminApi = axios.create({
-  baseURL: "http://192.168.1.123:8081/api/admin",
+  baseURL: "http://35.236.140.51:8081/api/admin",
 });
 
 
@@ -27,13 +27,13 @@ adminApi.interceptors.request.use((config) => {
 
 // admin/manager 相關的api
 // 後台管理員帳號
-export const apiManagerCaptcha = () => adminApi.post("/manager/code");
+export const apiManagerCaptcha = () => adminApi.post("manager/code");
 export const apiManagerLogin = (data) => adminApi.post("/manager/login", data);
 
-export const apiManagerList = () => adminApi.post("/manager/");
+export const apiManagerList = () => adminApi.post("/manager");
 export const apiManagerShow = (data) => adminApi.post("/manager/" + data);
-export const apiManagerAdd = (data) => adminApi.put("/manager/", data);
-export const apiManagerUpdate = (data) => adminApi.patch("/manager/", data);
+export const apiManagerAdd = (data) => adminApi.put("/manager", data);
+export const apiManagerUpdate = (data) => adminApi.patch("/manager", data);
 export const apiManagerDel = (data) => adminApi.delete("/manager/"+ data);
 
 
