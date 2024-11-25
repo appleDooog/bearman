@@ -8,7 +8,8 @@ axios.defaults.withXSRFToken = true;
 axios.defaults.withCredentials = true;
 
 const adminApi = axios.create({
-  baseURL: "http://35.236.140.51:8081/api/admin",
+  baseURL: "http://127.0.0.1:8000/api/admin"
+  // baseURL: "http://35.236.140.51:8081/api/admin",
 });
 
 

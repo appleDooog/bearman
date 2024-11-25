@@ -8,7 +8,7 @@
 
 <template>
   <div
-    class="d-block border border-1 border-dark m-5 rounded-5 mt-5"
+    class="d-block border border-1 border-dark m-5 m-md-3 mt-md-5 rounded-5"
     id="countNote"
     name="countNote"
   >
@@ -17,9 +17,9 @@
         class="col-md-2 rounded-circle align-content-center"
         :class="bg_color"
       >
-        <i class="fa-3x fa-solid text-white" :class="icon"></i>
+        <i class="fa-2x fa-solid text-white" :class="icon"></i>
       </div>
-      <div class="col-lg-6 col-md-8 d-block">
+      <div class="col-lg-9 col-md-8 d-block mt-3">
         <div class="h2">{{ title }}</div>
         <div class="display-5" :class="color"><slot></slot></div>
       </div>
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-var count;
 export default {
   name: "countNote",
   data: function () {

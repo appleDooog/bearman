@@ -90,17 +90,17 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from) => {
-//   const isLogin = store.state.auth.isLogin;
+router.beforeEach((to, from) => {
+  const isLogin = store.state.auth.isLogin;
 
-//   if (to.path === "/admin") return;
+  if (to.path === "/admin") return;
 
-//   if(!isLogin){
-//     return {name: "admin"};
-//   }else{
-//     return true;
-//   }
+  if(!isLogin){
+    return {name: "admin"};
+  }else{
+    return true;
+  }
   
-// })
+})
 
 export default router;

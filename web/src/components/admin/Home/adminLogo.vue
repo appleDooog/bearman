@@ -11,10 +11,10 @@
 
 <template>
   <div
-    class="adminLogo row justify-content-around border-bottom border-2"
+    class="adminLogo d-flex border-bottom border-2"
     style="height: 192px"
   >
-    <div class="col col-md-9 align-content-center">
+    <div class="col col-md-9 align-content-center ps-5">
       <RouterLink to="/admin/home" replace class="text-decoration-none">
         <div class="display-3 color-g1" style="font-family: nanifont">
           遠熊駕駛艙
@@ -22,13 +22,13 @@
       </RouterLink>
       <div class="text-secondary lh-lg">後台管理系統 v1.</div>
     </div>
-    <div class="col-4 col-md-1 align-items-center d-flex">
+    <div class="col-4 col-md-3 justify-content-center align-items-center d-flex">
       <RouterLink to="/admin/home" replace
         ><i
           class="link-secondary fa-solid fa-2xl fa-shop d-none d-sm-inline-block"
         ></i
       ></RouterLink>
-      <button class="btn btn-outline-success color-g2 btn-lg fw-bold ms-auto" @click="logout">
+      <button class="btn btn-outline-success color-g2 btn-lg fw-bold ms-3" @click="logout">
         登出
       </button>
     </div>

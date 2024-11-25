@@ -6,7 +6,7 @@
   border-bottom-right-radius: 40px;
   transition: 300ms;
   .rounded-circle {
-    width: 15%;
+    width: 17%;
     height: 70%;
   }
 
@@ -16,7 +16,7 @@
 }
 
 .adminItems:hover {
-  width: 250px;
+  width:103%;
   margin-right: -20px;
   z-index: 9999;
 }

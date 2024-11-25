@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <div class="row justify-content-center">
-      <RouterLink to="../member/">
+      <RouterLink to="../manager/">
         <button type="button" class="btn btn-primary">上一頁</button>
       </RouterLink>
     </div>
@@ -11,7 +11,7 @@
           <div class="card">
             <div class="card-body">
               <div class="h1">新增管理員</div>
-              <div class="row">
+              <div class="row justify-content-center">
                 <label
                   for="name"
                   class="form-label col-md-2 justify-content-center align-content-center text-end"
@@ -29,7 +29,7 @@
                 </div>
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
-              <div class="row mt-3">
+              <div class="row mt-3 justify-content-center">
                 <label
                   for="password"
                   class="form-label col-md-2 justify-content-center align-baseline text-end"
@@ -50,7 +50,7 @@
                 </div>
                 <div class="badge text-danger col-md-1 text-start">*必填</div>
               </div>
-              <div class="text-center mb-3">
+              <div class="text-center my-3">
                 <button type="submit" class="btn btn-primary me-3">送出</button>
                 <button type="reset" class="btn btn-warning">清空</button>
               </div>
@@ -61,3 +61,5 @@
     </div>
   </div>
 </template>
+
+

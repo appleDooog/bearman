@@ -1,11 +1,12 @@
-<style></style>
+<style>
+</style>
 <template>
-  <div class="row justify-content-center" style="margin-right: 0">
+  <div class="row justify-content-center">
     <div
-      class="col-md-8 d-flex justify-content-around"
+      class="col-lg-10"
       style="padding-top: 70px"
     >
-      <div class="row justify-content-around">
+      <div class="d-flex justify-content-center flex-wrap">
         <adminTypes line="bg-pink" style="z-index: 4">
           <template #title>網站管理 </template>
           <ul>
@@ -68,7 +69,7 @@
           <ul>
             <li class="list-unstyled">
               <a href="#" class="text-decoration-none link-dark">
-                <adminItems style="background-color: #0d51a1">
+                <adminItems :hover style="background-color: #0d51a1">
                   訂單列表
                 </adminItems>
               </a>
@@ -107,7 +108,7 @@
       <adminTypes title="訂單管理" line="bg-b2">VV</adminTypes>
       <adminTypes title="會員管理" line="bg-g2"></adminTypes> -->
     </div>
-    <div class="col-md-3 text-center">
+    <div class="col-lg-2 text-center">
       <countNote>{{ count01 }}</countNote>
       <countNote
         title="待處理訂單"
@@ -116,13 +117,6 @@
         icon="fa-file-lines"
         >{{ count02 }}</countNote
       >
-    </div>
-  </div>
-  <div class="container">
-    <div class="row mt-3">
-      <div>
-        <canvas id="myChart"></canvas>
-      </div>
     </div>
   </div>
 </template>
