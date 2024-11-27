@@ -5,15 +5,12 @@ module.exports = defineConfig({
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({
-        // Vue CLI is in maintenance mode, and probably won't merge my PR to fix this in their tooling
-        // https://github.com/vuejs/vue-cli/pull/7443
-        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "false",
+        __VUE_OPTIONS_API__: true,
+        __VUE_PROD_DEVTOOLS__: false,
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false, // 明確定義旗標
       }),
     ],
   },
-});
-
-module.exports = {
   pages: {
     index: {
       entry: "src/main.js",
@@ -27,9 +24,9 @@ module.exports = {
       entry: "src/mainAdmin.js",
       // the source template
       template: "public/adminIndex.html",
-      // output as dist/index.html
+      // output as dist/admin/index.html
       filename: "admin/index.html",
       title: "Admin",
     },
   },
-};
+});

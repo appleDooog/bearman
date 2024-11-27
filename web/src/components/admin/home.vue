@@ -6,7 +6,7 @@
       class="col-lg-10"
       style="padding-top: 70px"
     >
-      <div class="d-flex justify-content-center flex-wrap">
+      <div class="d-flex justify-content-center flex-nowrap">
         <adminTypes line="bg-pink" style="z-index: 4">
           <template #title>網站管理 </template>
           <ul>

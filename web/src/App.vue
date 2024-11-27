@@ -14,6 +14,7 @@ export default {
   name: "App",
   methods: {
     tlt(){
+
       $('.tlt').textillate({ in: { effect: 'bounce', sequence: true, delayScale: 4, }, out:{effect: 'bounce', sequence: true, delayScale: 4,}, loop: true, minDisplayTime: 100
     });}
   },
