@@ -55,8 +55,12 @@ class AdminManagerController extends Controller
     }
 
     public function insert(Request $req){
-        Manager::created($req->all);
-        return response()->json(['state'=>'true'], 201);
+        $list = new Manager();
+        $list -> username = $req->name;
+        $list -> password = $req->password;
+        $list -> job = $req->job;
+        $list->save();
+        return response()->json(['state'=>'true', 'list'=>$list], 201);
     }
 
     public function update(Request $req){

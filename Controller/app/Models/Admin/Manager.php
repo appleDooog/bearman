@@ -13,12 +13,11 @@ class Manager extends Model
     protected $table = 'manager';
     protected $primaryKey = "id";
     protected $fillable = [
-        'id',
         'username',
         'password',
         'job',
-        'createTime',
     ];
+
 
 
     public function getAdmin($username, $password){

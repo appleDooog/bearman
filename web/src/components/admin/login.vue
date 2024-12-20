@@ -123,7 +123,6 @@ export default {
         .then((res) => {
           var valid = res.data.message;
           if (valid == "success") {
-            console.log(res.data);
             var token = res.data.token;
             var job = res.data.job;
             var username = this.data.username;

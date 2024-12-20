@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  name: "footer",
+  name: "",
   methods: {
     map() {
       const map = L.map("map").setView(

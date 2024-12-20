@@ -1,3 +1,11 @@
+/* google font
+font-family:'Noto Serif TC';
+font-family:'Noto Sans TC';
+font-family:'Zen Maru Gothic';
+*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&Noto+Sans+TC:wght@100..900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+
 /* 何某手寫
 Light
 DemiLight
@@ -26,13 +34,6 @@ Bold
 }
 
 
-/* google font
-noto-serif-tc
-*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
-
-
-
 :root {
   --color01: #fffdf9;
   --color02: #2bb1a6;
@@ -47,11 +48,10 @@ noto-serif-tc
 
 body {
   font-family: "naikaifont", "nanifont", "Noto Sans TC", sans-serif;
-  ;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  background-color: #fffdf9;
+  /* background-color: #fffdf9; */
 }
 
 .color-rice {
@@ -175,15 +175,17 @@ body {
 
 /*老師的旋轉卡片效果
 外層: flip-card
-內層: 
-  正面:flip-card-inner
-  背面:fli[-card-back
+內層: flip-card-inner
+  正面:flip-card-front
+  背面:flip-card-back
+圓形圖片: .circle
+下在inner、front、back
 */
 
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 300px;
+  /* width: 300px;
+  height: 300px; */
   perspective: 1000px;
 }
 
@@ -219,5 +221,18 @@ body {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
-
 }
+
+.circle {
+  aspect-ratio: 1 / 1; /* 確保寬高比例為 1:1，保持圓形 */
+  width: 100%; /* 寬度填滿父容器 */
+  border-radius: 50%; /* 將元素變成圓形 */
+  display: flex; /* 使用 Flexbox 將內容置中 */
+  justify-content: center; /* 水平置中 */
+  align-items: center; /* 垂直置中 */
+  margin: auto; /* 讓圓形居中 */
+}
+
+
+
+

@@ -30,8 +30,7 @@
               <tr
                 v-for="item in datalist"
                 :key="item.id"
-                class="align-baseline"
-              >
+                class="align-baseline">
                 <td class="col-1">{{ item.id }}</td>
                 <td class="col-1">{{ item.name }}</td>
                 <td class="col-2">{{ item.address }}</td>
@@ -61,7 +60,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { apiMemberDel, apiMemberList } from "@/api";
 export default {
@@ -105,12 +103,8 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-          
         }
-      });
-
-
-      
+      });      
     },
   },
   mounted() {

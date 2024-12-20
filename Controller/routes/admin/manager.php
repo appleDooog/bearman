@@ -11,7 +11,7 @@ Route::group(["prefix" => "admin/manager"], function () {
         Route::post("/{id}", [AdminManagerController::class, "show"]);
         Route::put("/", [AdminManagerController::class, "insert"]);
         Route::patch("/", [AdminManagerController::class, "update"]);
-        Route::delete("/", [AdminManagerController::class, "delete"]);
+        Route::delete("/{id}", [AdminManagerController::class, "delete"]);
     });
     
 });

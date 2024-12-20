@@ -93,14 +93,18 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   const isLogin = store.state.auth.isLogin;
 
-  if (to.path === "/admin") return;
-
-  if(!isLogin){
-    return {name: "admin"};
-  }else{
-    return true;
+  // 如果是未登入狀態，導向登入頁
+  if (!isLogin && to.path !== "/admin") {
+    return { name: "admin" }; // 導向登入頁
   }
-  
-})
+
+  // 如果是登入狀態並嘗試訪問登入頁，導向首頁
+  if (isLogin && to.path === "/admin") {
+    return { name: "home" }; // 導向首頁
+  }
+
+  return true; // 允許導航
+});
+
 
 export default router;

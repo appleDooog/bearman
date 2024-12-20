@@ -13,7 +13,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav w-75 justify-content-around me-auto mb-lg-0">
+        <ul class="navbar-nav w-75 justify-content-around ms-4 me-auto mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">首頁</a>
           </li>
