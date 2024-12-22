@@ -1,19 +1,40 @@
 <template>
-  <div class="row row-cols-2">
+  <div class="d-flex h-100">
+    <!-- 側邊欄 -->
+    <adminMenu :isMenuOpen="isMenuOpen" @toggleMenu="toggleMenu" />
 
-        <div class="col-md-2 d-none d-md-block"><Menu></Menu></div>
-        <div class="col-12 col-md-10 mt-3">
-          <RouterView></RouterView>
-        </div>
+    <!-- 主內容區域 -->
+    <div class="content-area flex-grow-1">
+      <RouterView />
+    </div>
   </div>
 </template>
 
 <script>
-import Menu from "./menu.vue";
+import adminMenu from "./menu.vue";
+
 export default {
-  name: "memberPanel",
+  name: "index",
   components: {
-    Menu,
+    adminMenu,
+  },
+  data() {
+    return {
+      isMenuOpen: true, // 控制側邊欄的展開/收合狀態
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen; // 切換選單狀態
+    },
   },
 };
 </script>
+
+<style scoped>
+/* 主內容區域樣式 */
+.content-area {
+  overflow-y: auto;
+  padding: 20px;
+}
+</style>

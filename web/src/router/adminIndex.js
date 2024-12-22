@@ -15,8 +15,15 @@ const routes = [
     name: "home",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
-      default: () => import("../components/admin/home.vue"),
+      default: () => import("../components/admin/index.vue"),
     },
+    children: [
+      {
+        name: "homeMemberList",
+        path: "", // 預設顯示
+        component: () => import("../components/admin/member/memberList.vue"),
+      },
+    ],
   },
   {
     path: "/admin/member",
@@ -91,6 +98,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
+  console.log(`Navigating from ${from.path} to ${to.path}`);
   const isLogin = store.state.auth.isLogin;
 
   // 如果是未登入狀態，導向登入頁
@@ -105,6 +113,5 @@ router.beforeEach((to, from) => {
 
   return true; // 允許導航
 });
-
 
 export default router;

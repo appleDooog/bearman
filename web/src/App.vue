@@ -36,7 +36,7 @@
 <script>
 import working from "@/components/front/working.vue"
 import mainLogo from "@/components/front/mainLogo.vue"
-import slick from '@/components/front/home/slick.vue'
+import slick from '@/components/front/home/features/slick.vue'
 import homeSection01 from '@/components/front/home/homeSection01.vue'
 import homeSection02 from '@/components/front/home/homeSection02.vue'
 import homeSection04 from '@/components/front/home/homeSection04.vue'
