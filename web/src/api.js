@@ -39,7 +39,6 @@ export const apiManagerUpdate = (data) => adminApi.patch("/manager", data);
 export const apiManagerDel = (data) => adminApi.delete("/manager/"+ data);
 
 
-
 // admin/member 相關的api
 // apiMemberList(data)
 // data: {type:'list'}=> 取得所有資料, {type: 'count'}=> 取得總筆數
