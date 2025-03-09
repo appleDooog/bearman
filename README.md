@@ -3,7 +3,7 @@ Hello，老師好
 不知道您會不會繼續看到這邊
 
 因為進度有點慢網頁遲遲沒做完，先跟您說簡單的demo方式
-
+<br/>
 
 需要下載的只有controller跟web這兩個資料夾，請放在同個目錄下
 
@@ -11,12 +11,20 @@ controller是Laravel專案
 
 web是vue專案
 
-
+<br/>
 在本機各自安裝好後打開Wamp設定好phpmyadmin
 
 各別到controller和web資料夾底下啟動serve
 
 從前台打開就能在本地端顯示了
+
+資料庫備份在bearman/Controller/storage/
+
+有最新的資料表可以直接匯入
+
+<br/>
+
+內容粗淺，希望可以幫到大家一點忙
 
 
 ---
