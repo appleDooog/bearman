@@ -190,7 +190,7 @@
 </template>
 
 <script>
-import { apiMemberAdd } from "@/api";
+import { apiMemberAdd } from "@/api/adminApi";
 
 export default {
   name: "memberAdd",

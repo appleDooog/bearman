@@ -17,8 +17,8 @@
               會員列表
             </span>
           </RouterLink>
-          
         </li>
+
         <li class="my-2 d-flex align-items-center"  v-if="job == 0">
           <RouterLink
             to="/admin/manager"
@@ -30,8 +30,8 @@
               管理員列表
             </span>
           </RouterLink>
-          
         </li>
+
       </ul>
 
       <!-- 標籤按鈕 -->
@@ -74,16 +74,19 @@ export default {
 
 <style scoped>
 /* 側邊欄樣式 */
+/* 側邊欄樣式 */
 .menu {
   width: 180px; /* 展開狀態的寬度 */
+  height: 100%;
   transition: width 0.5s ease;
-  overflow: hidden;
+  overflow-y: auto;
   background-color: #f8f9fa;
 }
 
 .menu-collapsed {
   width: 50px; /* 收合狀態的寬度 */
 }
+
 </style>
 
 

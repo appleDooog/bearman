@@ -1,22 +1,41 @@
 <template>
-  <div class="adminLogo container-fluid border-bottom border-2">
+  <div
+    class="d-flex flex-column justify-content-center adminLogo container-fluid border-bottom border-2"
+  >
     <!-- 第一行：LOGO 和按鈕 -->
-    <div class="d-flex align-items-center justify-content-centerpb-3 px-5">
+    <div class="d-flex col align-items-center justify-content-center pb-3 px-5">
       <!-- 左側 LOGO -->
       <div class="d-flex flex-column align-items-start flex-grow-1">
         <RouterLink to="/admin/home" replace class="text-decoration-none">
-          <div class="logo-text color-g1">遠熊駕駛艙</div>
+          <div class="logo-text color-g1 text-nowrap">遠熊駕駛艙</div>
         </RouterLink>
         <div class="sub-title d-block">後台管理系統 v1.</div>
       </div>
 
+      <!-- 中間的統計區域 -->
+      <div
+        class="d-none d-md-flex col justify-content-center align-items-center stats-section gap-1"
+      >
+        <countNote :title="'會員人數'" class="col bg-b1 py-3 px-3 me-3">
+          {{ count01 }}
+        </countNote>
+        <countNote
+          :title="'待處理訂單'"
+          :bg_color="'bg-b1'"
+          :icon="'fa-file-lines'"
+          class="col bg-g1 py-3 px-3"
+        >
+          {{ count02 }}
+        </countNote>
+      </div>
+
       <!-- 右側按鈕與圖示 -->
-      <div class="d-flex align-items-center justify-content-end">
+      <div class="d-flex col align-items-center justify-content-end">
         <RouterLink to="/admin/home" replace>
           <i class="fa-solid fa-xl fa-shop link-secondary me-3"></i>
         </RouterLink>
         <button
-          class="btn btn-outline-success fw-bold color-g1 logout-btn"
+          class="btn btn-outline-success fw-bold color-g1 logout-btn text-nowrap"
           @click="logout"
         >
           登出
@@ -24,17 +43,18 @@
       </div>
     </div>
 
-    <!-- 第二行：統計區域 -->
+    <!-- md的統計區域 -->
     <div
-      class="d-flex justify-content-center align-items-center stats-section mt-3 gap-1 mx-3"
+      class="d-md-none d-flex col justify-content-center align-items-center stats-section mt-3 gap-1 mx-3"
     >
-      <countNote :title="'會員人數'" class="col bg-b1 py-3">
+      <countNote :title="'會員人數'" class="col bg-b1 py-3 mx-3">
         {{ count01 }}
       </countNote>
       <countNote
         :title="'待處理訂單'"
         :bg_color="'bg-b1'"
-        :icon="'fa-file-lines'" class="col bg-g1 py-3"
+        :icon="'fa-file-lines'"
+        class="col bg-g1 py-3"
       >
         {{ count02 }}
       </countNote>
@@ -44,7 +64,7 @@
 
 <script>
 import countNote from "./countNote.vue";
-import { apiMemberList } from "@/api";
+import { apiMemberList } from "@/api/adminApi";
 
 export default {
   name: "adminLogo",

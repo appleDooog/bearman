@@ -92,7 +92,7 @@
 
 
 <script>
-import { apiManagerCaptcha, apiManagerLogin } from "@/api";
+import { apiManagerCaptcha, apiManagerLogin } from "@/api/adminApi";
 
 export default {
   name: "adminLogin",

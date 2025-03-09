@@ -16,7 +16,8 @@ const routes = [
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
       default: () => import("../components/admin/index.vue"),
-    },
+    }, 
+    redirect: { name: "homeMemberList" }, // 指向子路由
     children: [
       {
         name: "homeMemberList",
@@ -99,19 +100,20 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   console.log(`Navigating from ${from.path} to ${to.path}`);
-  const isLogin = store.state.auth.isLogin;
+  const isLogin = store.state.auth.isLogin; // 從 Vuex 獲取登入狀態
 
-  // 如果是未登入狀態，導向登入頁
+  // 未登入情況：除了登入頁外，其他路由都導向登入頁
   if (!isLogin && to.path !== "/admin") {
     return { name: "admin" }; // 導向登入頁
   }
 
-  // 如果是登入狀態並嘗試訪問登入頁，導向首頁
+  // 已登入情況：若嘗試訪問登入頁，導向首頁
   if (isLogin && to.path === "/admin") {
     return { name: "home" }; // 導向首頁
   }
 
   return true; // 允許導航
 });
+
 
 export default router;

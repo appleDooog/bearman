@@ -65,13 +65,16 @@
 
 
 <script>
-import { apiMemberDel, apiMemberList } from "@/api";
+import { apiMemberDel, apiMemberList } from "@/api/adminApi";
 export default {
   name: "memberList",
   data: function () {
     return {
       datalist: [],
     };
+  },
+  created() {
+    this.getlist();
   },
   methods: {
     async getlist() {
@@ -111,8 +114,6 @@ export default {
       });      
     },
   },
-  mounted() {
-    this.getlist();
-  },
+
 };
 </script>

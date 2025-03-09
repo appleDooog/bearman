@@ -1,12 +1,12 @@
 <template>
-  <div class="countNote d-flex flex-md-column justify-content-center align-items-center text-center rounded-5">
+  <div class="countNote d-flex justify-content-center align-items-center text-center rounded-5">
     <!-- 圖示 -->
     <div class="icon-container mb-2" :class="bg_color" v-if="icon">
       <i class="fa-solid text-white" :class="icon"></i>
     </div>
 
     <!-- 內容 -->
-    <div class="content">
+    <div class="content text-nowrap">
       <div class="value mb-1" :class="color"><slot></slot></div>
       <div class="title">{{ title }}</div>
     </div>

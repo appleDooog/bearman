@@ -181,7 +181,7 @@
 // 動態id在router設定, 賦值
 // 參考辛西亞巢狀路由頁面
 //   const id = this.$route.params.id;
-import { apiMemberEdit, apiMemberUpdate } from "@/api";
+import { apiMemberEdit, apiMemberUpdate } from "@/api/adminApi";
 export default {
   data() {
     return {

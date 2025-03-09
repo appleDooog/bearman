@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { apiManagerDel, apiManagerList } from "@/api";
+import { apiManagerDel, apiManagerList } from "@/api/adminApi";
 
 export default {
   name: "managerList",

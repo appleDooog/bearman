@@ -77,7 +77,7 @@
   </div>
 </template>
 <script>
-import { apiManagerAdd } from "@/api";
+import { apiManagerAdd } from "@/api/adminApi";
 
 export default {
   name: "managerAdd",
