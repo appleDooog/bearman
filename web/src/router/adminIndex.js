@@ -77,18 +77,28 @@ const routes = [
     ],
   },
   {
-    path: "/admin/product",
-    name: "productPanel",
+    path: "/admin/settings",
+    name: "webPanel",
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
       default: () => import("../components/admin/index.vue"),
     },
     children: [
       {
-        name: "productList",
-        path: "",
-        component: () => import("../components/admin/product/item/list.vue"),
+        name: "web_home",
+        path: "home",
+        component: () => import("../components/admin/web/web_home.vue"),
       },
+      {
+        name: "web_class",
+        path: "course",
+        component: () => import("../components/admin/web/web_home.vue"),
+      },
+      {
+        name: "web_contact",
+        path: "contact",
+        component: () => import("../components/admin/web/web_home.vue"),
+      }
     ],
   },
 ];
