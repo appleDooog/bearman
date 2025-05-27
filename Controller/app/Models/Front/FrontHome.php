@@ -25,7 +25,7 @@ class FrontHome extends Model
     public function getList()
     {
         $list = self::where('active', 'Y')
-            ->select('title', 'seq', 'type',)
+            ->select('title', 'seq', 'type','active', 'createTime')
             ->orderBy('seq', 'asc')
             ->get();
 

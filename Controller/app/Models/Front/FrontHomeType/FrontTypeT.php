@@ -18,4 +18,9 @@ class FrontTypeT extends Model
         'content',
         'active'
     ];
+
+    public function getList(){
+        $list = self::all();
+        return $list;
+    }
 }

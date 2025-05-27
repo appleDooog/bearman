@@ -18,3 +18,8 @@ export const apiMemberAdd = (data) => adminApi.put("/member", data);
 export const apiMemberEdit = (id) => adminApi.post(`/member/${id}`);
 export const apiMemberUpdate = (data) => adminApi.patch("/member", data);
 export const apiMemberDel = (id) => adminApi.delete(`/member/${id}`);
+
+//admin/settings/ 相關的API
+// web 網頁設置
+export const apiWebPageList = () => adminApi.post("/settings/web");
+export const apiTypeTList = () => adminApi.post("/settings/typeT")

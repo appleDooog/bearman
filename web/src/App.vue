@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="my-5">
-    <template v-for="item in list" :key="item.id">
+  <template v-for="item in list" :key="item.id">
       <div class="vh-100 align-content-center">
         <template v-for="child in item.items" :key="child.home_seq">
           <frontTypeT v-if="item.type === 'T'">
@@ -23,7 +23,6 @@
             <template v-slot:subtitle>
               <div v-html="child.subtitle"></div>
             </template>
-
             <template v-if="child.content != 'null'" v-slot:content>
               <div v-html="child.content"></div>
             </template>
@@ -38,11 +37,10 @@
         </template>
       </div>
     </template>
-
-    <!-- <div class="vh-100 align-content-center">
+   <div class="vh-100 align-content-center">
       <homeSection02></homeSection02>
     </div>
-    <div class="vh-100 align-content-center">
+    <!--  <div class="vh-100 align-content-center">
       <homeSection04></homeSection04>
     </div>
     <div class="vh-100 align-content-center">
@@ -66,7 +64,6 @@ import homeSection04 from "@/components/front/home/homeSection04.vue";
 import homeSection05 from "@/components/front/home/homeSection05.vue";
 import AppFooter from "@/components/front/footer.vue";
 import { frontHome } from "@/api/frontApi";
-import FrontTypeT from "@/components/front/home/frontTypeT.vue";
 
 export default {
   name: "App",

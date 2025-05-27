@@ -11,77 +11,103 @@
           <li class="nav-item">
             <a href="#typeT" class="nav-link" data-bs-toggle="tab">文案版面</a>
           </li>
+          <li class="nav-item">
+            <a href="#typeS" class="nav-link" data-bs-toggle="tab"
+              >圖片按鈕連結區塊</a
+            >
+          </li>
         </ul>
       </div>
       <div class="card-body">
         <div class="tab-content">
           <!-- Tab1 Start-->
-          <div class="tab-pane" id="frontHomeSeq">
+          <div class="tab-pane active show" id="frontHomeSeq">
             <form @submit.prevent="">
               <h4>首頁版面排序</h4>
-              <div>調整首頁排序，總之去參考老師的Code</div>
+              <div class="table-responsive">
+                <table
+                  class="table table-hover table-bordered text-center align-middle"
+                >
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th>ID</th>
+                      <th>名稱</th>
+                      <th>首頁排序</th>
+                      <th>類型</th>
+                      <th>狀態</th>
+                      <th>建立時間</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="list in item_list" :key="list.id">
+                      <td>{{ list.id }}</td>
+                      <td class="text-start">{{ list.title }}</td>
+                      <td>{{ list.seq }}</td>
+                      <td>
+                        <span class="badge">{{
+                          list.type === "P"
+                            ? "輪播幻燈片"
+                            : list.type === "T"
+                              ? "文案區塊"
+                              : list.type === "S"
+                                ? "圖片按鈕連結區塊"
+                                : "LOGO區塊"
+                        }}</span>
+                      </td>
+                      <td class="justify-content-center">
+                        <label class="form-check form-switch">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            v-model="list.active"
+                            true-value="Y"
+                            false-value=""
+                          />
+                        </label>
+                      </td>
+                      <td>{{ list.createTime }}</td>
+                      <td>
+                        <div
+                          class="btn-list justify-content-center text-center"
+                        >
+                          <a
+                            class="btn btn-primary btn-icon"
+                            @click="onEdit(list)"
+                            title="編輯"
+                          >
+                            <i class="fa fa-edit ms-1"></i>
+                          </a>
+                          <a
+                            class="btn btn-danger btn-icon"
+                            @click="onDelete(list)"
+                            title="刪除"
+                          >
+                            <i class="fa fa-trash ms-1"></i>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </form>
           </div>
           <!-- Tab1 End -->
 
           <!-- Tab2 Start-->
-          <div class="tab-pane active show" id="typeT">
+          <div class="tab-pane" id="typeT">
             <h4>文案內容設定</h4>
             <form @submit.prevent="">
-              <table class="table card-table table-vcenter text-nowrap">
-                <thead>
-                  <tr>
-                    <th>主標題</th>
-                    <th>次標題</th>
-                    <th>內容</th>
-                    <th>是否啟用</th>
-                    <th>建立時間</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item_typeT.title"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item_typeT.subtitle"
-                      />
-                    </td>
-                    <td>
-                      <textarea
-                        class="form-control"
-                        v-model="item_typeT.content"
-                        rows="3"
-                      ></textarea>
-                    </td>
-                    <td>
-                      <label class="form-check form-switch">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          v-model="item_typeT.active"
-                        />
-                      </label>
-                    </td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+              <AdminFrontTypeT></AdminFrontTypeT>
             </form>
           </div>
           <!-- Tab2 End -->
 
           <!-- Tab3 Start-->
-          <div class="tab-pane" id="typeP">
-            <h4>圖片板塊內容設定</h4>
-            <div>只能設定文字內容唷</div>
+          <div class="tab-pane" id="typeS">
+            <h4>圖片按鈕連結區塊</h4>
+            <AdminFrontTypeS></AdminFrontTypeS>
           </div>
           <!-- Tab3 End -->
         </div>
@@ -91,14 +117,25 @@
 </template>
 
 <script>
+import { apiWebPageList } from "@/api/adminApi";
+import AdminFrontTypeT from "./home_features/AdminFrontTypeT.vue";
+import AdminFrontTypeS from "./home_features/AdminFrontTypeS.vue";
+
 export default {
+  components: {
+    AdminFrontTypeT,
+    AdminFrontTypeS,
+  },
   data() {
     return {
-      item_typeT: {
+      item_list: {
+        id: "",
         title: "",
-        subtitle: "",
-        content: "",
-        active: true,
+        seq: "",
+        type: "",
+        active: "",
+        createTime: "",
+        items: [],
       },
     };
   },
@@ -106,6 +143,17 @@ export default {
     submitTypeT() {
       console.log("送出主標題：", this.item_typeT.title);
     },
+    async getList() {
+      try {
+        const res = await apiWebPageList();
+        this.item_list = res.data.list;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+  created() {
+    this.getList();
   },
 };
 </script>

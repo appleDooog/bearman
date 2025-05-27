@@ -18,7 +18,6 @@ class AdminManagerController extends Controller
     }
 
 
-
     public function login(Request $req)
     {
 
