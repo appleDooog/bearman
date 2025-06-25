@@ -89,6 +89,11 @@ const routes = [
         path: "home",
         component: () => import("../components/admin/web/web_home.vue"),
       },
+            {
+        name: "web_home_add",
+        path: "home/.",
+        component: () => import("../components/admin/web/home_features/web_add.vue"),
+      },
       {
         name: "web_class",
         path: "course",
