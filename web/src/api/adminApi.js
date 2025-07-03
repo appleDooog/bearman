@@ -22,4 +22,7 @@ export const apiMemberDel = (id) => adminApi.delete(`/member/${id}`);
 //admin/settings/ 相關的API
 // web 網頁設置
 export const apiWebPageList = () => adminApi.post("/settings/web");
-export const apiTypeTList = () => adminApi.post("/settings/typeT")
+export const apiWebPageAdd = (data) => adminApi.put("/settings/web", data);
+
+//文案版塊列表
+export const apiTypeTList = () => adminApi.post("/settings/typeT");

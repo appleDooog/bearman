@@ -16,16 +16,18 @@ class FrontHome extends Model
     protected $table = 'front_home';
     protected $primaryKey = "id";
     protected $fillable = [
+        'id',
         'title',
         'seq',
         'type',
+        'typeId',
         'active'
     ];
 
     public function getList()
     {
         $list = self::where('active', 'Y')
-            ->select('title', 'seq', 'type','active', 'createTime')
+            ->select('id','title', 'seq', 'type','typeId','active', 'createTime')
             ->orderBy('seq', 'asc')
             ->get();
 
@@ -33,26 +35,26 @@ class FrontHome extends Model
             switch ($item->type) {
                 case 'T':
                     $item->items = FrontTypeT::where('active', 'Y')
-                        ->where('home_seq', $item->seq)
+                        ->where('id', $item->typeId)
                         ->select('title','subtitle', 'content')
                         ->get()
                         ->toArray();
                     break;
                 case 'P':
                     $item->items = FrontTypeP::where('active', 'Y')
-                        ->where('home_seq', $item->seq)
+                        ->where('id', $item->typeId)
                         ->get()
                         ->toArray();
                     break;
                 case 'S':
                     $item->items = FrontTypeS::where('active', 'Y')
-                        ->where('home_seq', $item->seq)
+                        ->where('id', $item->typeId)
                         ->get()
                         ->toArray();
                     break;
                 case 'L':
                     $item->items = FrontTypeL::where('active', 'Y')
-                        ->where('home_seq', $item->seq)
+                        ->where('id', $item->typeId)
                         ->get()
                         ->toArray();
                     break;
