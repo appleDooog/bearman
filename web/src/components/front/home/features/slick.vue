@@ -1,125 +1,136 @@
-<style></style>
 <template>
-  <!-- <div class="container text-center">
-    
-      <button class="btn slick-arrow"></button>
-      <div class="slider center ">
-        <div class="h1">1</div>
-        <div class="h1">2</div>
-        <div class="h1">3</div>
-        <div class="h1">4</div>
-        <div class="h1">5</div>
-      </div>
-    
-  </div> -->
-  <div
-    id="carouselExampleIndicators"
-    class="carousel slide"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img
-          src="@/assets/test/bass_lr06.jpg"
-          class="d-block w-100"
-          alt="..."
-          height="750px"
-        />
-      </div>
-      <div class="carousel-item">
-        <img
-          src="@/assets/test/drums_lr05.jpg"
-          class="d-block w-100"
-          alt="..."
-          height="750px"
-        />
-      </div>
-      <div class="carousel-item">
-        <img
-          src="@/assets/test/guitar_lr04.jpg"
-          class="d-block w-100"
-          alt="..."
-          height="750px"
-        />
+  <div class="container-fluid">
+    <div class="row">
+  <div class="slick-wrapper">
+    <div class="slider center">
+      <div v-for="(img, index) in images" :key="index" class="slide-item">
+        <a
+          :href="img.url?img.url:'#'"
+          rel="noopener noreferrer"
+        >
+          <img :src="img.src" class="img-slide" :alt="'Slide ' + (index + 1)" />
+        </a>
       </div>
     </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  </div>  
+    </div>
   </div>
+  
 </template>
 
 <script>
 export default {
-  methods: {
-    slider() {
-      $(".center").slick({
+  props: {
+    images: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  mounted() {
+    this.$nextTick(() => {
+      $(".slider.center").slick({
         centerMode: true,
-        centerPadding: "60px",
-        slidesToShow: 3,
+        centerPadding: "40px",
+        slidesToShow: 1,
+        dots: true,
+        arrows: true,
+        autoplay: true,
+        autoplaySpeed: 4000,
         responsive: [
           {
             breakpoint: 768,
             settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: "40px",
-              slidesToShow: 3,
+              centerPadding: "20px",
+              slidesToShow: 1,
             },
           },
           {
             breakpoint: 480,
             settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: "40px",
+              centerPadding: "10px",
               slidesToShow: 1,
             },
           },
         ],
       });
-    },
-  },
-
-  mounted() {
-    this.slider();
+    });
   },
 };
 </script>
+
+<style>
+/* 讓 slick 容器有定位基準 */
+.slick-wrapper {
+  position: relative;
+  padding: 30px 0;
+}
+
+/* 圖片滑動容器 */
+.slider.center {
+  width: 100%;
+}
+
+/* 每張圖片包裹容器 */
+.slide-item {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 圖片樣式 */
+.img-slide {
+  width: 90%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.img-slide:hover {
+  transform: scale(1.02);
+}
+
+/* 點點樣式 */
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #f5d6dc;
+  opacity: 0.8;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #2bb1a6;
+  opacity: 1;
+}
+
+/* 箭頭樣式 */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(245, 214, 220, 0.85);
+  border-radius: 50%;
+  border: none;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #f5d6dc;
+}
+</style>

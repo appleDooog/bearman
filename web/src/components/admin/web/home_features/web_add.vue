@@ -1,189 +1,199 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="card">
-        <div class="card-header">新增首頁板塊</div>
-        <div class="card-body">
-          <form action="" method="post" enctype="multipart/form-data">
-            <!-- 類型選擇 -->
-            <div class="row mb-3 align-items-center">
-              <div class="col-auto fw-bold">
-                <label for="type" class="col-form-label">類型</label>
-              </div>
-              <div class="col-md-3">
-                <select
-                  name="type"
-                  id="type"
-                  class="form-select"
-                  v-model="form.type"
-                >
-                  <option value="" disabled selected>請選擇</option>
-                  <option value="T">文案區塊</option>
-                  <option value="S">輪播幻燈片</option>
-                  <option value="P">圖片按鈕連結區塊</option>
-                  <option value="L">LOGO區塊</option>
-                </select>
-              </div>
-            </div>
+  <div class="container mt-4">
+    <h3>新增首頁板塊</h3>
+    <form @submit.prevent="submit">
+      <div class="mb-3">
+        <label class="form-label">類型</label>
+        <select v-model="form.type" class="form-select" required>
+          <option value="">請選擇</option>
+          <option value="T">文案區塊</option>
+          <option value="S">輪播區塊</option>
+        </select>
+      </div>
 
-            <!-- 文案板塊 -->
-            <template v-if="form.type === 'T'">
-              <!-- 版塊名稱 -->
-              <div class="row mb-3 align-items-center">
-                <div class="col-auto fw-bold">
-                  <label for="name" class="col-form-label">版塊名稱</label>
-                </div>
-                <div class="col-md-4">
-                  <input type="text" id="name" class="form-control" />
-                </div>
-              </div>
-
-              <!-- 大標題 -->
-              <div class="row mb-3 align-items-center">
-                <div class="col-auto fw-bold">
-                  <label for="title" class="col-form-label">大標題</label>
-                </div>
-                <div class="col-md-6">
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-
-              <!-- 次標題 -->
-              <div class="row mb-3 align-items-center">
-                <div class="col-auto fw-bold">
-                  <label for="subtitle" class="col-form-label">次標題</label>
-                </div>
-                <div class="col-md-6">
-                  <input
-                    type="text"
-                    id="subtitle"
-                    name="subtitle"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-
-              <!-- 內容 -->
-              <div class="row mb-3 align-items-start">
-                <div class="col-auto fw-bold">
-                  <label for="content" class="col-form-label">內容</label>
-                </div>
-                <div class="col-md-8">
-                  <textarea
-                    id="content"
-                    name="content"
-                    class="form-control"
-                    rows="3"
-                  ></textarea>
-                </div>
-              </div>
-            </template>
-
-            <!-- 幻燈片板塊 -->
-            <template v-if="form.type === 'S'">
-              <!-- 版塊名稱 -->
-              <div class="row mb-3 align-items-center">
-                <div class="col-auto fw-bold">
-                  <label for="name" class="col-form-label">版塊名稱</label>
-                </div>
-                <div class="col-md-4">
-                  <input type="text" id="name" class="form-control" />
-                </div>
-              </div>
-
-              <!-- 上傳圖片（多張） -->
-              <div class="row mb-3">
-                <div class="col-auto fw-bold">
-                  <label for="slidePic" class="col-form-label">上傳圖片</label>
-                </div>
-                <div class="col-md-6">
-                  <input
-                    type="file"
-                    id="slidePic"
-                    name="slidePic"
-                    class="form-control"
-                    multiple
-                    accept="image/*"
-                    @change="handleSlideImages"
-                  />
-                  <small class="form-hint text-muted"
-                    >支援拖拉、選擇多張圖，但最多只能 5 張喔！</small
-                  >
-                </div>
-              </div>
-
-              <!-- 預覽圖片 -->
-              <div class="row mb-3" v-if="previewSlides.length">
-                <div class="col-12 d-flex flex-wrap gap-3">
-                  <div
-                    v-for="(img, index) in previewSlides"
-                    :key="index"
-                    class="border rounded p-2 shadow-sm"
-                    style="width: 150px"
-                  >
-                    <img
-                      :src="img"
-                      alt="預覽圖片"
-                      class="img-fluid rounded mb-1"
-                    />
-                    <div class="text-center">
-                      <small>圖片 {{ index + 1 }}</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- 更多幻燈片設定欄位可補上 -->
-            </template>
-            <div class="text-center" @click="submit()">
-              <div class="btn btn-primary">送　出</div>
-            </div>
-          </form>
+      <div v-if="form.type === 'T'">
+        <div class="mb-3">
+          <label class="form-label">版塊名稱</label>
+          <input v-model="form.name" type="text" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">大標題</label>
+          <input v-model="form.title" type="text" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">副標題</label>
+          <input v-model="form.subtitle" type="text" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">內容</label>
+          <textarea
+            v-model="form.content"
+            rows="4"
+            class="form-control"
+          ></textarea>
         </div>
       </div>
-    </div>
+
+      <!-- 這部分放在 <form> 裡，判斷 type === 'S' 時顯示 -->
+      <div v-if="form.type === 'S'">
+        <div class="mb-3">
+          <label class="form-label">版塊名稱</label>
+          <input v-model="form.name" type="text" class="form-control" />
+        </div>
+
+        <!-- 上傳圖片 -->
+        <div class="mb-3">
+          <label class="form-label">上傳圖片（最多 5 張）</label>
+          <input
+            type="file"
+            class="form-control"
+            multiple
+            accept="image/*"
+            @change="handleSlideImages"
+          />
+        </div>
+
+        <!-- 預覽圖片 + 連結輸入 -->
+        <div class="row" v-if="form.slides.length">
+          <div
+            v-for="(img, index) in form.slides"
+            :key="index"
+            class="col-md-4 mb-3"
+          >
+            <img :src="img.preview" class="img-fluid border rounded" />
+            <div class="mt-2">
+              <label class="form-label small"
+                >圖片 {{ index + 1 }} 的連結</label
+              >
+              <input
+                v-model="img.url"
+                type="text"
+                class="form-control"
+                placeholder="https://..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-if="form.type === 'P'">
+        <div class="mb-3">
+          <label class="form-label">版塊名稱</label>
+          <input v-model="form.name" type="text" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">上傳圖片</label>
+          <input
+            type="file"
+            class="form-control"
+            accept="image/*"
+            @change="handleBgImages"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">上傳圖片</label>
+          <input
+            type="file"
+            class="form-control"
+            accept="image/*"
+            @change="handleBgImages"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">上傳圖片</label>
+          <input
+            type="file"
+            class="form-control"
+            accept="image/*"
+            @change="handleBgImages"
+          />
+        </div>
+
+        <!-- 預覽圖片 + 連結輸入 -->
+        <div class="row" v-if="form.bgImages.length">
+          <div
+            v-for="(img, index) in form.bgImages"
+            :key="index"
+            class="col-md-4 mb-3"
+          >
+            <img :src="img.preview" class="img-fluid border rounded" />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">送出</button>
+    </form>
   </div>
 </template>
 
 <script>
+import { apiWebPageAdd } from "@/api/adminApi";
+
 export default {
   data() {
     return {
       form: {
         type: "",
-        slides: [], // 儲存使用者實際上傳的圖片檔案
+        name: "",
+        title: "",
+        subtitle: "",
+        content: "",
+        slides: [], // ← 陣列中放物件 { file, preview, url }
+        bgImages: [],
       },
-      previewSlides: [], // 儲存預覽用的圖片網址
     };
   },
   methods: {
-    handleSlideImages(event) {
-      const files = Array.from(event.target.files);
+    handleSlideImages(e) {
+      const files = Array.from(e.target.files);
 
+      // 2. 檢查張數限制
       if (files.length > 5) {
-        alert("最多只能上傳 5 張圖片喔！");
+        alert("最多只能上傳 5 張圖片！");
         return;
       }
 
-      // 釋放舊的圖片 URL
-      this.previewSlides.forEach((url) => URL.revokeObjectURL(url));
+      this.form.slides.forEach((s) => URL.revokeObjectURL(s.preview));
 
-      // 儲存檔案本體
-      this.form.slides = files;
-
-      // 預覽圖片網址
-      this.previewSlides = files.map((file) => URL.createObjectURL(file));
+      // 建立預覽與對應欄位
+      this.form.slides = files.map((file) => ({
+        file,
+        preview: URL.createObjectURL(file),
+        url: "", // 預設連結欄位為空
+      }));
     },
+
+    handleBgImages(f){
+      const files = Array.form(f.target.files)
+    },
+
     submit() {
-      alert("上傳成功");
-      this.$router.replace({ name: "web_home" });
+      const formData = new FormData();
+      formData.append("type", this.form.type);
+      formData.append("name", this.form.name);
+
+      if (this.form.type === "T") {
+        formData.append("title", this.form.title);
+        formData.append("subtitle", this.form.subtitle);
+        formData.append("content", this.form.content);
+      }
+
+      if (this.form.type === "S") {
+        // 上傳圖片
+        this.form.slides.forEach((slide, i) => {
+          formData.append(`images[${i}]`, slide.file);
+          formData.append(`urls[${i}]`, slide.url); // 同時送出網址對應
+        });
+      }
+
+      apiWebPageAdd(formData)
+        .then((res) => {
+          alert("新增成功！");
+          this.$router.replace({ name: "web_home" });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
   },
 };
 </script>
-
-<style lang="sass" scoped></style>

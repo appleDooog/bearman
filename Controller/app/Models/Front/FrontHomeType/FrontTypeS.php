@@ -12,16 +12,7 @@ class FrontTypeS extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'id',
-        'slidePic1',
-        'slidePic2',
-        'slidePic3',
-        'slidePic4',
-        'slidePic5',
-        'slideUrl1',
-        'slideUrl2',
-        'slideUrl3',
-        'slideUrl4',
-        'slideUrl5',
+        'image_data',
         'createTime'
     ];
 }

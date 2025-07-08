@@ -12,11 +12,9 @@ class FrontTypeT extends Model
     protected $table = 'front_type_text';
     protected $primaryKey = "id";
     protected $fillable = [
-        'home_seq',
         'title',
         'subtitle',
         'content',
-        'active'
     ];
 
     public function getList(){

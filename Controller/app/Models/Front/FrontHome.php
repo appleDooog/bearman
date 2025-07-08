@@ -27,42 +27,33 @@ class FrontHome extends Model
     public function getList()
     {
         $list = self::where('active', 'Y')
-            ->select('id','title', 'seq', 'type','typeId','active', 'createTime')
+            ->select('id', 'title', 'seq', 'type', 'typeId', 'active', 'createTime')
             ->orderBy('seq', 'asc')
             ->get();
+
 
         foreach ($list as $item) {
             switch ($item->type) {
                 case 'T':
-                    $item->items = FrontTypeT::where('active', 'Y')
+                    $item->items = FrontTypeT::select('title', 'subtitle', 'content')
                         ->where('id', $item->typeId)
-                        ->select('title','subtitle', 'content')
-                        ->get()
-                        ->toArray();
+                        ->first();
                     break;
                 case 'P':
-                    $item->items = FrontTypeP::where('active', 'Y')
-                        ->where('id', $item->typeId)
-                        ->get()
-                        ->toArray();
+                    $item->items = FrontTypeP::find($item->typeId);
                     break;
                 case 'S':
-                    $item->items = FrontTypeS::where('active', 'Y')
-                        ->where('id', $item->typeId)
-                        ->get()
-                        ->toArray();
+                    $item->items = FrontTypeS::find($item->typeId);
                     break;
                 case 'L':
-                    $item->items = FrontTypeL::where('active', 'Y')
-                        ->where('id', $item->typeId)
-                        ->get()
-                        ->toArray();
+                    $item->items = FrontTypeL::find($item->typeId);
                     break;
                 default:
-                    $item->items = [];
+                    $item->items = null;
                     break;
             }
         }
+
         return $list;
     }
 }
