@@ -43,6 +43,9 @@ class AdminWebController extends Controller
 
     public function web_insert(Request $req)
     {
+        ini_set('max_execution_time', '0');
+        ini_set('memory_limit', '-1');
+        
         DB::beginTransaction();
 
         try {
@@ -83,21 +86,22 @@ class AdminWebController extends Controller
                             $file->extension()
                         );
 
-                        // 儲存圖片路徑與空連結
-                        $fullUrl = url("images/slidePic/" . $filename);
+                        // 只存相對路徑（避免不同環境的完整網址衝突）
+                        $relativePath = "images/slidePic/" . $filename;
+
                         $imageData[] = [
-                            'src' => $fullUrl,
-                            'url' => $req->input("urls.$i", ""), // 如果未來有設連結
+                            'src' => $relativePath,
+                            'url' => $req->input("urls.$i", ""),
                         ];
                     }
                 }
+
                 $item = new FrontTypeS();
                 $item->image_data = json_encode($imageData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
                 $item->save();
-
-                $home->typeId = $item->id;
             }
 
+            $home->typeId = $item->id;
             $home->save();
 
             DB::commit(); // 所有資料成功才送出
@@ -106,6 +110,18 @@ class AdminWebController extends Controller
         } catch (\Exception $e) {
             DB::rollBack(); // 發生錯誤 → 回滾所有動作
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function web_delete(Request $req)
+    {
+        $frontHome = new FrontHome();
+        $deleted = $frontHome->deleteItem($req->id);
+
+        if ($deleted) {
+            return response()->json(['success' => true, 'message' => '刪除成功'], 200);
+        } else {
+            return response()->json(['success' => false, 'message' => '找不到資料'], 404);
         }
     }
 }

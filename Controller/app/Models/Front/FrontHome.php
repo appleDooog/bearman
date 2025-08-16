@@ -8,6 +8,8 @@ use App\Models\Front\FrontHomeType\FrontTypeS;
 use App\Models\Front\FrontHomeType\FrontTypeT;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontHome extends Model
 {
@@ -31,7 +33,6 @@ class FrontHome extends Model
             ->orderBy('seq', 'asc')
             ->get();
 
-
         foreach ($list as $item) {
             switch ($item->type) {
                 case 'T':
@@ -53,7 +54,35 @@ class FrontHome extends Model
                     break;
             }
         }
-
         return $list;
+    }
+
+    public function deleteItem($id)
+    {
+
+        $item = self::find($id);
+        if (!$item) {
+            return false;
+        }
+
+        DB::transaction(function () use ($item) {
+            switch ($item->type) {
+                case 'T':
+                    FrontTypeT::where('id', $item->typeId)->delete();
+                    break;
+                case 'P':
+                    FrontTypeP::where('id', $item->typeId)->delete();
+                    break;
+                case 'S':
+                    FrontTypeS::where('id', $item->typeId)->delete();
+                    break;
+                case 'L':
+                    FrontTypeL::where('id', $item->typeId)->delete();
+                    break;
+            }
+            $item->delete();
+        });
+
+        return true;
     }
 }

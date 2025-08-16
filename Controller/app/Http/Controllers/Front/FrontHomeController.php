@@ -13,4 +13,6 @@ class FrontHomeController extends Controller
         $list = (new FrontHome())->getList();
         return response()->json(['list' => $list], 200);
     }
+
+    
 }
