@@ -162,8 +162,8 @@ export default {
       }));
     },
 
-    handleBgImages(f){
-      const files = Array.form(f.target.files)
+    handleBgImages(f) {
+      const files = Array.form(f.target.files);
     },
 
     submit() {
@@ -182,6 +182,10 @@ export default {
         this.form.slides.forEach((slide, i) => {
           formData.append(`images[${i}]`, slide.file);
           formData.append(`urls[${i}]`, slide.url); // 同時送出網址對應
+        });
+
+        formData.forEach((value, key) => {
+          console.log(key, value);
         });
       }
 

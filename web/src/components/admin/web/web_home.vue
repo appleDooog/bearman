@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { apiWebPageList, apiWebActiveChange } from "@/api/adminApi";
+import { apiWebPageList, apiWebActiveChange, apiWebDelete } from "@/api/adminApi";
 import AdminFrontTypeT from "./home_features/AdminFrontTypeT.vue";
 import AdminFrontTypeS from "./home_features/AdminFrontTypeS.vue";
 
@@ -134,6 +134,29 @@ export default {
         item.active = item.active === "Y" ? "" : "Y";
       }
     },
+    async onDelete(item) {
+      const result = await Swal.fire({
+        icon: "warning",
+        title: "確定要刪除嗎？",
+        showCancelButton: true,
+        confirmButtonText: "刪除",
+        cancelButtonText: "取消",
+      });
+
+      if (result.isConfirmed) {
+        try {
+          await apiWebDelete(item.id); // 呼叫你的刪除 API
+          Swal.fire({
+            icon: "success",
+            title: "刪除成功",
+            timer: 1500,
+          });
+          this.getList(); // ✅ 刪除後直接刷新列表
+        } catch (err) {
+          console.error("刪除失敗", err);
+        }
+      }
+    }
   },
   created() {
     this.getList();

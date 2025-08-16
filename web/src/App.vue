@@ -5,8 +5,7 @@
   </div>
   <div>
     <div class="container">
-      <div class="row">
-      </div>
+      <div class="row"></div>
     </div>
   </div>
   <div class="my-5">
@@ -33,7 +32,6 @@
         <frontTypeS v-if="item.type === 'S'" :images="item.items.image_data" />
 
         <!-- 圖塊P -->
-
       </div>
     </template>
     <div class="vh-100 align-content-center">
@@ -58,7 +56,7 @@ import working from "@/components/front/working.vue";
 import mainLogo from "@/components/front/mainLogo.vue";
 import frontTypeS from "@/components/front/home/features/slick.vue";
 import frontTypeT from "@/components/front/home/frontTypeT.vue";
-import frontTypeP from "@/components/front/home/frontTypeP.vue"
+import frontTypeP from "@/components/front/home/frontTypeP.vue";
 import homeSection02 from "@/components/front/home/homeSection02.vue";
 import homeSection04 from "@/components/front/home/homeSection04.vue";
 import homeSection05 from "@/components/front/home/homeSection05.vue";
@@ -88,10 +86,20 @@ export default {
         const res = await frontHome();
         this.list = res.data.list;
         console.log(this.list);
+
         res.data.list.forEach((item) => {
           if (item.type === "S") {
             try {
-              item.items.image_data = JSON.parse(item.items.image_data);
+              item.items.image_data = JSON.parse(item.items.image_data).map(
+                (img) => {
+                  return {
+                    ...img,
+                    src: img.src.startsWith("http")
+                      ? img.src
+                      : `${process.env.VUE_APP_API_BASE.replace("/api/admin", "")}/${img.src}`,
+                  };
+                }
+              );
             } catch (err) {
               console.error("圖片資料解析失敗：", err);
             }

@@ -24,6 +24,7 @@ export const apiMemberDel = (id) => adminApi.delete(`/member/${id}`);
 export const apiWebPageList = () => adminApi.post("/settings/web");
 export const apiWebActiveChange = (data) =>adminApi.patch("/settings/web/active", data);
 export const apiWebPageAdd = (data) => adminApi.post("/settings/web/insert", data);
+export const apiWebDelete = (id) => adminApi.delete(`/settings/web/${id}`);
 
 //文案版塊列表
 export const apiTypeTList = () => adminApi.post("/settings/typeT");
