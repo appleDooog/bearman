@@ -16,7 +16,7 @@ const routes = [
     components: {
       logo: () => import("../components/admin/Home/adminLogo.vue"),
       default: () => import("../components/admin/index.vue"),
-    }, 
+    },
     redirect: { name: "homeMemberList" }, // 指向子路由
     children: [
       {
@@ -89,10 +89,18 @@ const routes = [
         path: "home",
         component: () => import("../components/admin/web/web_home.vue"),
       },
-            {
+      {
         name: "web_home_add",
         path: "home/.",
-        component: () => import("../components/admin/web/home_features/web_add.vue"),
+        component: () =>
+          import("../components/admin/web/home_features/web_add.vue"),
+      },
+      {
+        name: "web_home_edit",
+        path: "home/./:id?",
+        component: () =>
+          import("../components/admin/web/home_features/web_edit.vue"),
+        props: true,
       },
       {
         name: "web_class",
@@ -103,7 +111,7 @@ const routes = [
         name: "web_contact",
         path: "contact",
         component: () => import("../components/admin/web/web_home.vue"),
-      }
+      },
     ],
   },
 ];
@@ -129,6 +137,5 @@ router.beforeEach((to, from) => {
 
   return true; // 允許導航
 });
-
 
 export default router;

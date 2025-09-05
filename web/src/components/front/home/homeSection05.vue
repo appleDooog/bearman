@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import flipCard from "@/components/front/home/features/flipCard.vue";
+import flipCard from "@/components/front/home/features/frontTypeL.vue";
 
 export default {
   components: {

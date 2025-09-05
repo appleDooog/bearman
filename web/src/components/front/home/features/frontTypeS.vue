@@ -5,7 +5,7 @@
     <div class="slider center">
       <div v-for="(img, index) in images" :key="index" class="slide-item">
         <a
-          :href="img.url?img.url:'#'"
+          :href="img.url || 'javascript:void(0)'"
           rel="noopener noreferrer"
         >
           <img :src="img.src" class="img-slide" :alt="'Slide ' + (index + 1)" />

@@ -5,14 +5,13 @@ namespace App\Models\Front\FrontHomeType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FrontTypeP extends Model
+class LogoItems extends Model
 {
+    protected $table = 'front_type_logo_items';
     public $timestamps = false;
-    protected $table = 'front_type_pic';
-    protected $primaryKey = "id";
+
     protected $fillable = [
-        'id',
-        'image_data',
-        'createTime'
+        'front_type_logo_id',
+        'logo_id',
     ];
 }

@@ -170,7 +170,7 @@ body {
 }
 
 .r-box:hover .roller {
-  transform: translate(0, 0);
+  transform: translate(50%, 0);
 }
 
 

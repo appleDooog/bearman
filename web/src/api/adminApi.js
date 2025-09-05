@@ -25,6 +25,22 @@ export const apiWebPageList = () => adminApi.post("/settings/web");
 export const apiWebActiveChange = (data) =>adminApi.patch("/settings/web/active", data);
 export const apiWebPageAdd = (data) => adminApi.post("/settings/web/insert", data);
 export const apiWebDelete = (id) => adminApi.delete(`/settings/web/${id}`);
+// web edit 顯示首頁版塊詳細內容和修改
+export const apiWebPageDetail = (id) => adminApi.get(`/settings/web/${id}`);
+export const apiWebPageUpdate = (id, data) => adminApi.post(`/settings/web/${id}`, data);
 
-//文案版塊列表
-export const apiTypeTList = () => adminApi.post("/settings/typeT");
+// =====================
+// 品牌 LOGO 管理 (logos)
+// =====================
+export const apiLogosList = () => adminApi.get("/settings/logos");
+export const apiLogosAdd = (data) => adminApi.post("/settings/logos", data);
+export const apiLogosUpdate = (id, data) => adminApi.post(`/settings/logos/${id}`, data);
+export const apiLogosDelete = (id) => adminApi.delete(`/settings/logos/${id}`);
+
+// =====================
+// Logo 區塊管理 (front_type_logo)
+// =====================
+export const apiLogoBlocksList = () => adminApi.get("/settings/logo-blocks");
+export const apiLogoBlocksAdd = (data) => adminApi.post("/settings/logo-blocks", data);
+export const apiLogoBlocksAttach = (id, logoIds) => adminApi.post(`/settings/logo-blocks/${id}/attach`, { logo_ids: logoIds });
+export const apiLogoBlocksDelete = (id) => adminApi.delete(`/settings/logo-blocks/${id}`);

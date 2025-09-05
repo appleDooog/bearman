@@ -32,17 +32,11 @@
         <frontTypeS v-if="item.type === 'S'" :images="item.items.image_data" />
 
         <!-- 圖塊P -->
+        <frontTypeP v-if="item.type === 'P'" :images="item.items.image_data" />
+        <!-- LOGO -->
+        <FrontTypeL v-if="item.type === 'L'" :images="item.items.image_data" />
       </div>
     </template>
-    <div class="vh-100 align-content-center">
-      <homeSection02></homeSection02>
-    </div>
-    <!--  <div class="vh-100 align-content-center">
-      <homeSection04></homeSection04>
-    </div>
-    <div class="vh-100 align-content-center">
-      <homeSection05></homeSection05>
-    </div> -->
   </div>
   <div>
     <AppFooter></AppFooter>
@@ -54,9 +48,10 @@
 <script>
 import working from "@/components/front/working.vue";
 import mainLogo from "@/components/front/mainLogo.vue";
-import frontTypeS from "@/components/front/home/features/slick.vue";
-import frontTypeT from "@/components/front/home/frontTypeT.vue";
-import frontTypeP from "@/components/front/home/frontTypeP.vue";
+import frontTypeS from "@/components/front/home/features/frontTypeS.vue";
+import frontTypeT from "@/components/front/home/features/frontTypeT.vue";
+import frontTypeP from "@/components/front/home/features/frontTypeP.vue";
+import FrontTypeL from "@/components/front/home/features/frontTypeL.vue";
 import homeSection02 from "@/components/front/home/homeSection02.vue";
 import homeSection04 from "@/components/front/home/homeSection04.vue";
 import homeSection05 from "@/components/front/home/homeSection05.vue";
@@ -70,6 +65,8 @@ export default {
     mainLogo,
     frontTypeS,
     frontTypeT,
+    frontTypeP,
+    FrontTypeL,
     homeSection02,
     homeSection04,
     homeSection05,
@@ -88,7 +85,7 @@ export default {
         console.log(this.list);
 
         res.data.list.forEach((item) => {
-          if (item.type === "S") {
+          if (item.type === "S" || item.type === "P" || item.type === "L") {
             try {
               item.items.image_data = JSON.parse(item.items.image_data).map(
                 (img) => {

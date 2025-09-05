@@ -56,13 +56,13 @@
                 <td>{{ list.createTime }}</td>
                 <td>
                   <div class="btn-list justify-content-center text-center">
-                    <a
+                    <RouterLink
+                      :to="{ name: 'web_home_edit', params: { id: list.id } }"
                       class="btn btn-success btn-icon"
-                      @click="onEdit(list)"
-                      title="編輯"
                     >
                       <i class="fa fa-edit ms-1"></i>
-                    </a>
+                    </RouterLink>
+
                     <a
                       class="btn btn-danger btn-icon"
                       @click="onDelete(list)"
@@ -82,15 +82,13 @@
 </template>
 
 <script>
-import { apiWebPageList, apiWebActiveChange, apiWebDelete } from "@/api/adminApi";
-import AdminFrontTypeT from "./home_features/AdminFrontTypeT.vue";
-import AdminFrontTypeS from "./home_features/AdminFrontTypeS.vue";
+import {
+  apiWebPageList,
+  apiWebActiveChange,
+  apiWebDelete,
+} from "@/api/adminApi";
 
 export default {
-  components: {
-    AdminFrontTypeT,
-    AdminFrontTypeS,
-  },
   data() {
     return {
       item_list: {
@@ -156,7 +154,7 @@ export default {
           console.error("刪除失敗", err);
         }
       }
-    }
+    },
   },
   created() {
     this.getList();
