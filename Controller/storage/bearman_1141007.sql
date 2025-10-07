@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3307
--- 產生時間： 2025-07-09 10:03:39
+-- 產生時間： 2025-10-07 07:53:22
 -- 伺服器版本： 11.5.2-MariaDB
 -- PHP 版本： 8.3.14
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `bearman`
 --
-CREATE DATABASE IF NOT EXISTS `bearman` DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci;
-USE `bearman`;
 
 -- --------------------------------------------------------
 
@@ -69,29 +67,64 @@ CREATE TABLE IF NOT EXISTS `front_home` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(30) DEFAULT NULL COMMENT '標題',
   `seq` int(11) DEFAULT NULL COMMENT '排序',
-  `type` char(1) DEFAULT NULL COMMENT 'P:幻燈片/T:文字/S:圖片方塊/L:Logo',
+  `type` char(1) DEFAULT NULL COMMENT 'S:幻燈片/T:文字/P:圖片方塊/L:Logo',
   `typeId` int(11) DEFAULT NULL,
   `active` char(1) DEFAULT 'Y' COMMENT 'Y:啟用',
   `createTime` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='首頁物件類型及排序';
+) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='首頁物件類型及排序';
 
 --
 -- 傾印資料表的資料 `front_home`
 --
 
 INSERT INTO `front_home` (`id`, `title`, `seq`, `type`, `typeId`, `active`, `createTime`) VALUES
-(1, '2025幻燈片', 1, 'S', NULL, NULL, '2025-03-09 10:49:55'),
-(2, 'slogan1:我們的願景', 2, 'T', 1, 'Y', '2025-03-09 10:49:55'),
-(3, '相關服務的圖片方塊', 3, 'P', NULL, NULL, '2025-03-09 10:54:00'),
-(4, 'Slogan2:我們的服務', 4, 'T', 2, 'Y', '2025-03-09 10:55:21'),
-(5, '代理品牌的LOGO們', 5, 'L', NULL, NULL, '2025-03-09 10:55:21'),
-(6, 'hahahah', 6, 'T', 6, '', '2025-07-07 08:18:42'),
-(13, 'aaa', 7, 'T', 13, '', '2025-07-08 01:28:19'),
-(28, 'ddddd', 18, 'S', 3, 'Y', '2025-07-08 04:31:50'),
-(29, 'test', 19, 'S', 4, '', '2025-07-08 10:22:35'),
-(21, 'test', 12, 'T', 21, '', '2025-07-08 01:32:51'),
-(27, 'aaaa', 17, 'S', 2, '', '2025-07-08 03:38:30');
+(2, 'slogan1:我們的願景', 1, 'T', 1, '', '2025-03-09 10:49:55'),
+(4, 'Slogan2:我們的服務', 2, 'T', 2, 'Y', '2025-03-09 10:55:21');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `front_type_logo`
+--
+
+DROP TABLE IF EXISTS `front_type_logo`;
+CREATE TABLE IF NOT EXISTS `front_type_logo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `createTime` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `front_type_logo_items`
+--
+
+DROP TABLE IF EXISTS `front_type_logo_items`;
+CREATE TABLE IF NOT EXISTS `front_type_logo_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `front_type_logo_id` int(11) NOT NULL,
+  `logo_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `front_type_logo_id` (`front_type_logo_id`),
+  KEY `logo_id` (`logo_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `front_type_pic`
+--
+
+DROP TABLE IF EXISTS `front_type_pic`;
+CREATE TABLE IF NOT EXISTS `front_type_pic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image_data` text DEFAULT NULL,
+  `createTime` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='圖塊連結區域';
 
 -- --------------------------------------------------------
 
@@ -102,19 +135,17 @@ INSERT INTO `front_home` (`id`, `title`, `seq`, `type`, `typeId`, `active`, `cre
 DROP TABLE IF EXISTS `front_type_slide`;
 CREATE TABLE IF NOT EXISTS `front_type_slide` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `image_data` text NOT NULL COMMENT '圖片與對應連結，JSON 格式',
+  `image_data` text DEFAULT NULL COMMENT '圖片與對應連結，JSON 格式',
   `createTime` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='幻燈片儲存內容';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='幻燈片儲存內容';
 
 --
 -- 傾印資料表的資料 `front_type_slide`
 --
 
 INSERT INTO `front_type_slide` (`id`, `image_data`, `createTime`) VALUES
-(2, '[{\"src\":\"/images/slidePic/slide_202507081138_484_0.jpg\",\"url\":\"\"},{\"src\":\"/images/slidePic/slide_202507081138_624_1.jpg\",\"url\":\"\"}]', '2025-07-08 03:38:30'),
-(3, '[{\"src\":\"http://127.0.0.1:8000/images/slidePic/slide_202507081231_959_0.jpg\",\"url\":null},{\"src\":\"http://127.0.0.1:8000/images/slidePic/slide_202507081231_065_1.jpg\",\"url\":null},{\"src\":\"http://127.0.0.1:8000/images/slidePic/slide_202507081231_094_2.jpg\",\"url\":null}]', '2025-07-08 04:31:50'),
-(4, '[{\"src\":\"http://127.0.0.1:8000/images/slidePic/slide_202507081822_138_0.png\",\"url\":null},{\"src\":\"http://127.0.0.1:8000/images/slidePic/slide_202507081822_614_1.png\",\"url\":null},{\"src\":\"http://127.0.0.1:8000/images/slidePic/slide_202507081822_966_2.png\",\"url\":null}]', '2025-07-08 10:22:35');
+(7, '[{\"src\":\"images/slidePic/slide_202509021609_487_0.jpg\",\"url\":\"google.com\"},{\"src\":\"images/slidePic/slide_202509021609_519_1.jpg\",\"url\":null}]', '2025-09-02 08:09:34');
 
 -- --------------------------------------------------------
 
@@ -130,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `front_type_text` (
   `content` varchar(250) DEFAULT NULL,
   `createTime` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='首頁文案(type:T)';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='首頁文案(type:T)';
 
 --
 -- 傾印資料表的資料 `front_type_text`
@@ -138,10 +169,24 @@ CREATE TABLE IF NOT EXISTS `front_type_text` (
 
 INSERT INTO `front_type_text` (`id`, `title`, `subtitle`, `content`, `createTime`) VALUES
 (1, '我們的願景', '從啟蒙到精進，陪伴您音樂成長的每一步<br>——為未來撲救美好旋律。', NULL, '2025-03-09 10:52:57'),
-(2, '我們的服務', '從選擇到學習，<br>遠熊樂器一站式解決你的音樂需求', '我們不僅提供高品質的樂器，同時提供專業的音樂教育和全面的配件支持。<br>\r\n無論您需要樂器本身還是相關的配件和教學，我們都能提供全方位的解決方案。', '2025-03-09 10:52:57'),
-(6, 'slfmlskdfnldsnfk', 'vvlfbndfnojfeoifjo', 'kjfsjfoisjdfopsidjfposdkfs;dkfl;dsfm,;', '2025-07-07 08:18:42'),
-(13, 'ccc', 'vvvv', 'bbbbbbb', '2025-07-08 01:28:19'),
-(21, '111', '222', '333', '2025-07-08 01:32:51');
+(2, '我們的服務', '從選擇到學習，<br>遠熊樂器一站式解決你的音樂需求', '我們不僅提供高品質的樂器，同時提供專業的音樂教育和全面的配件支持。<br>\r\n無論您需要樂器本身還是相關的配件和教學，我們都能提供全方位的解決方案。', '2025-03-09 10:52:57');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `logos`
+--
+
+DROP TABLE IF EXISTS `logos`;
+CREATE TABLE IF NOT EXISTS `logos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `createTime` timestamp NULL DEFAULT current_timestamp(),
+  `createBy` varchar(30) NOT NULL COMMENT '誰新增的',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -265,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `personal_access_tokens`
@@ -274,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
 (30, 'App\\Models\\Admin\\Manager', 5, 'AUTH TOKEN', '0446632e9e6c422bb22a2cf64d8dc4ae848af79fe00426d3667224e6dcc402cd', '[\"*\"]', '2024-11-30 08:18:59', '2024-11-30 08:18:50', '2024-11-30 08:18:59'),
 (51, 'App\\Models\\Admin\\Manager', 3, 'AUTH TOKEN', 'b470469e30edd7e85825fba4008c22661a4fdd7014197b3f08a142bce7bfd7a8', '[\"*\"]', '2024-12-29 09:39:11', '2024-12-29 09:39:11', '2024-12-29 09:39:11'),
-(97, 'App\\Models\\Admin\\Manager', 1, 'AUTH TOKEN', '4c6a23b69305b5a437eec8c6153da7eea720792db9cb0e7b0de4c9b26b964117', '[\"*\"]', '2025-07-09 09:58:09', '2025-07-09 09:58:06', '2025-07-09 09:58:09');
+(111, 'App\\Models\\Admin\\Manager', 1, 'AUTH TOKEN', 'a6e3c5f95ced77ba0fe1e7bfbbd795a09c1e5ca94e3eb4ccfac8372365947b04', '[\"*\"]', '2025-09-20 06:10:16', '2025-09-20 06:05:44', '2025-09-20 06:10:16');
 
 -- --------------------------------------------------------
 
