@@ -10,6 +10,10 @@ class Logos extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'image', 'url', 'active', 'createTime'
+        'name',
+        'image',
+        'url',
+        'createTime',
+        'createBy'
     ];
 }

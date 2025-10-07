@@ -178,6 +178,10 @@ class AdminWebController extends Controller
     // 更新資料 update
     public function web_update(Request $req, $id)
     {
+
+        ini_set('max_execution_time', '0');
+        ini_set('memory_limit', '-1');
+
         DB::beginTransaction();
 
         try {
@@ -195,13 +199,16 @@ class AdminWebController extends Controller
 
                 case 'S': // 輪播圖 (最多 5 張)
                     $item = FrontTypeS::findOrFail($home->typeId);
+                    $oldImages = json_decode($item->image_data, true) ?? [];
                     $imageData = [];
 
                     for ($i = 0; $i < 5; $i++) {
                         if ($req->hasFile("images.$i")) {
+
                             // 有新圖 → 取代舊圖
                             $file = $req->file("images.$i");
-                            $filename = "slide_" . time() . "_$i." . $file->extension();
+                            $times = explode(' ', microtime());
+                            $filename = "slide_" . strftime('%Y%m%d%H%M_', $times[1]) . substr($times[0], 2, 3) . "_$i." . $file->extension();
                             $savePath = public_path("images/slidePic/{$filename}");
 
                             new Resize(
@@ -213,6 +220,14 @@ class AdminWebController extends Controller
                                 0,
                                 $file->extension()
                             );
+
+                            // 有新圖 → 刪舊圖
+                            if (!empty($oldImages[$i]['src'])) {
+                                $oldPath = public_path($oldImages[$i]['src']);
+                                if (File::exists($oldPath)) {
+                                    File::delete($oldPath);
+                                }
+                            }
 
                             $relativePath = "images/slidePic/" . $filename;
                             $imageData[$i] = [
@@ -234,12 +249,14 @@ class AdminWebController extends Controller
 
                 case 'P': // 拼圖 (lt / lb / right 三張)
                     $item = FrontTypeP::findOrFail($home->typeId);
+                    $oldImages = json_decode($item->image_data, true) ?? [];
                     $imageData = [];
 
                     for ($i = 0; $i < 3; $i++) {
                         if ($req->hasFile("images.$i")) {
                             $file = $req->file("images.$i");
-                            $filename = "pic_" . time() . "_$i." . $file->extension();
+                            $times = explode(' ', microtime());
+                            $filename = "pic_" . strftime('%Y%m%d%H%M_', $times[1]) . substr($times[0], 2, 3) . "_$i." . $file->extension();
                             $savePath = public_path("images/picBlock/{$filename}");
 
                             new Resize(
@@ -251,6 +268,14 @@ class AdminWebController extends Controller
                                 0,
                                 $file->extension()
                             );
+
+                            // 有新圖 → 刪舊圖
+                            if (!empty($oldImages[$i]['src'])) {
+                                $oldPath = public_path($oldImages[$i]['src']);
+                                if (File::exists($oldPath)) {
+                                    File::delete($oldPath);
+                                }
+                            }
 
                             $relativePath = "images/picBlock/" . $filename;
                             $imageData[$i] = [

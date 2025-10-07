@@ -103,6 +103,24 @@ const routes = [
         props: true,
       },
       {
+        name: "web_logo",
+        path: "logos",
+        component: () => import("../components/admin/logos/list.vue"),
+      },
+      {
+        name: "web_logo_add",
+        path: "logos/.",
+        component: () =>
+          import("../components/admin/logos/add.vue"),
+      },
+      {
+        name: "web_logo_edit",
+        path: "logos/./:id?",
+        component: () =>
+          import("../components/admin/logos/edit.vue"),
+        props: true,
+      },
+      {
         name: "web_class",
         path: "course",
         component: () => import("../components/admin/web/web_home.vue"),

@@ -21,12 +21,13 @@ class AdminLogosController extends Controller
             $item = new Logos();
             $item->name = $req->name;
             $item->url = $req->url ?? null;
-            $item->active = $req->active ?? 'Y';
 
             if ($req->hasFile('image')) {
                 $file = $req->file('image');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $path = $file->storeAs('images/logos', $filename, 'public');
+                $times = explode(' ', microtime());
+                $filename = "slide_" . strftime('%Y%m%d%H%M_', $times[1]) . substr($times[0], 2, 3) . "_." . $file->extension();
+                $path = public_path("images/slidePic/{$filename}");
+
                 $item->image = $path;
             }
 
